@@ -1,0 +1,106 @@
+
+* Droplet configuration
+:PROPERTIES:
+:CREATED:  [2022-09-22 Thu 16:57]
+:ID:       e5f2285b-68f5-43a0-bc00-5a20fc657a73
+:END:
+
+Point nameservers to Digital Ocean's:
+
+#+begin_src sh
+ns1.digitalocean.com
+ns2.digitalocean.com
+ns3.digitalocean.com
+#+end_src
+
+* Theme
+:PROPERTIES:
+:CREATED:  [2022-09-22 Thu 16:57]
+:ID:       3c505129-0b7a-44a5-91a9-e48bb46413fc
+:END:
+#+begin_src css :tangle theme/static/main.css
+
+#+end_src
+
+The below is required to get the right dependencies
+#+begin_src elisp :tangle publish.el
+(require 'weblorg)
+
+;; Guarantee the freshest version of the weblorg
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
+(require 'weblorg)
+(require 'templatel)
+
+;; Setup package management
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Install and configure dependencies
+(use-package templatel :ensure t)
+(use-package htmlize
+  :ensure t
+  :config
+  (setq org-html-htmlize-output-type 'css))
+#+end_src
+
+#+begin_src elisp :tangle publish.el
+;; (weblorg-site
+;;  :template-vars '(("site_name" . "Daniel Otto's site")
+;;                   ("site_owner" . "translation@danielotto.jp (owner)")
+;;                   ("site_description" . "My personal profile and blog.")))
+
+
+;; route for rendering each post
+(weblorg-route
+ :name "posts"
+ :input-pattern "posts/*.org"
+ :template "post.html"
+ :output "output/posts/{{ slug }}.html"
+ :url "/posts/{{ slug }}.html")
+
+;; route for rendering the index page of the blog
+(weblorg-route
+ :name "blog"
+ :input-pattern "posts/*.org"
+ :input-aggregate #'weblorg-input-aggregate-all-desc
+ :template "blog.html"
+ :output "output/index.html"
+ :url "/")
+
+;; route for rendering each page
+(weblorg-route
+ :name "pages"
+ :input-pattern "pages/*.org"
+ :template "page.html"
+ :output "output/{{ slug }}.html"
+ :url "/{{ slug }}.html")
+
+;; route for static assets that also copies files to output directory
+(weblorg-copy-static
+ :output "static/{{ file }}"
+ :url "/static/{{ file }}")
+
+;; fire the engine and export all the files declared in the routes above
+(weblorg-export)
+#+end_src
+
+* Blog
+:PROPERTIES:
+:CREATED:  [2022-09-22 Thu 16:57]
+:ID:       55081071-39a4-427b-96c3-4673de0303f3
+:END:
+** Posts
+:PROPERTIES:
+:CREATED:  [2022-09-22 Thu 16:57]
+:ID:       2b743183-2108-4514-b495-d07caefc168d
+:END:
+*** Being a translator
+:PROPERTIES:
+:CREATED:  [2022-09-22 Thu 16:57]
+:ID:       fc0b792c-b1a1-4b75-9c7a-26bf5158a083
+:END:
