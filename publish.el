@@ -21,10 +21,11 @@
   :config
   (setq org-html-htmlize-output-type 'css))
 
-;; (weblorg-site
-;;  :template-vars '(("site_name" . "Daniel Otto's site")
-;;                   ("site_owner" . "translation@danielotto.jp (owner)")
-;;                   ("site_description" . "My personal profile and blog.")))
+(weblorg-site
+ :template-vars '(("site_name" . "Daniel Otto's site")
+                  ("site_author" "Daniel Otto")
+                  ("site_email" . "translation@danielotto.jp")
+                  ("site_description" . "My personal profile and blog.")))
 
 
 ;; route for rendering each post
