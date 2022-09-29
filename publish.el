@@ -1,5 +1,3 @@
-(require 'weblorg)
-
 ;; Guarantee the freshest version of the weblorg
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
@@ -20,6 +18,8 @@
   :ensure t
   :config
   (setq org-html-htmlize-output-type 'css))
+
+(setq weblorg-default-url "http://www.danielotto.jp")
 
 (weblorg-site
  :template-vars '(("site_name" . "Daniel Otto's site")
