@@ -1,27 +1,24 @@
-* Config                                                             :noexport:
+#+TAGS: ignore (i)
 
-** LaTeX Config
-** Exporter Settings
-** Macros
-
-* CV Header                                                            :ignore:
 #+TITLE: JtoE Games Translator
 #+AUTHOR: Daniel Otto
-#+EMAIL: translate@danielotto.xyz
+#+EMAIL: translate@danielotto.jp
+
 #+ADDRESS: Takadanobaba
 #+ADDRESS: Tokyo, Japan
 #+MOBILE: (080) 7650 1991
-#+HOMEPAGE: danielotto.xyz
+#+HOMEPAGE: danielotto.jp
 #+GITHUB: nanjigen
 #+LINKEDIN: dmotto
 #+PHOTO: smile.png
+
 ** Photo & Tagline                                                    :ignore:
 ** Personal Info                                                      :ignore:
 
 * CV Column one                                                        :ignore:
 
 ** Experience
-*** Freelance                                                   :ignore:
+*** Freelance
 :PROPERTIES:
 :CV_ENV: cventry
 :FROM:     <2017>
