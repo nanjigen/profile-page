@@ -1,4 +1,16 @@
 #+TAGS: ignore (i)
+#+options: email:t
+#+latex_class: altacv
+#+cvstyle: classic
+#+cvcolor: blue
+#+address: Takadanobaba
+#+address: Tokyo, Japan
+#+mobile: (080) 7650 1991
+#+homepage: danielotto.jp
+#+github: nanjigen
+#+linkedin: dmotto
+#+photo: smile.png
+#+LATEX_HEADER: \geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
 
 #+TITLE: JtoE Games Translator
 #+AUTHOR: Daniel Otto
@@ -31,27 +43,24 @@ Japanese to English game localisation and linguistic quality assurance over
 both mobile and console titles.
 *** Teaching Assistant                                               :ignore:
 ** Projects
-*** Project 1                                                        :ignore:
+*** Project 1
 PS4 Title for large publisher
 (Ongoing, currently under NDA)
-*** Project 2                                                        :ignore:
+*** Project 2
 Cat Painter「ネコの絵描きさん」
 Android, iOS/Waken
 *** Project 3
 Shadowverse
 eSports coverage materials/Cygames
 *** Do not export this project                                     :noexport:
-** Languages                                                        :noexport:
+** Languages
 English (Native Language)
 Japanese
 ** A day of my life                                                 :noexport:
 ** Volunteering
 *** EVO Japan
-*** Code Club                                                        :ignore:
-*** Drivetrain                                                       :ignore:
-*** Snowboard Captain                                                :ignore:
 
-* CV Column two                                                        :ignore:
+* CV Column two
 ** Technical Skills
 CAT Tools
 CafeTrans and OmegaT
