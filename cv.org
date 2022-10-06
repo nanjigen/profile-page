@@ -1,95 +1,112 @@
-#+TAGS: ignore (i)
-#+options: email:t
-#+latex_class: altacv
-#+cvstyle: classic
-#+cvcolor: blue
+#+TITLE: JtoE Games Translator
+#+AUTHOR: Daniel Otto
+#+EMAIL: translation@danielotto.jp
+
 #+address: Takadanobaba
 #+address: Tokyo, Japan
 #+mobile: (080) 7650 1991
 #+homepage: danielotto.jp
 #+github: nanjigen
+#+gitlab:
 #+linkedin: dmotto
-#+photo: smile.png
+#+latex_class: altacv
+#+cvcolor: blue
 #+LATEX_HEADER: \geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+#+LATEX_HEADER: \usepackage{luatexja}
+#+TAGS: noexport (n)
 
-#+TITLE: JtoE Games Translator
-#+AUTHOR: Daniel Otto
-#+EMAIL: translate@danielotto.jp
+** Photo & tagline                                                  :noexport:
+** Personal info                                                    :noexport:
 
-#+ADDRESS: Takadanobaba
-#+ADDRESS: Tokyo, Japan
-#+MOBILE: (080) 7650 1991
-#+HOMEPAGE: danielotto.jp
-#+GITHUB: nanjigen
-#+LINKEDIN: dmotto
-#+PHOTO: smile.png
-
-** Photo & Tagline                                                    :ignore:
-** Personal Info                                                      :ignore:
-
-* CV Column one                                                        :ignore:
-
-** Experience
-*** Freelance
+* Experience
+** Freelance translator
 :PROPERTIES:
 :CV_ENV: cventry
-:FROM:     <2017>
-:TO:     <2017-12-07>
+:FROM:     <2017-12-07>
+:TO:     Now
 :LOCATION: Sydney, Tokyo
 :EMPLOYER: The employer
 :END:
-Game Translator
-Japanese to English game localisation and linguistic quality assurance over
-both mobile and console titles.
-*** Teaching Assistant                                               :ignore:
-** Projects
-*** Project 1
-PS4 Title for large publisher
-(Ongoing, currently under NDA)
-*** Project 2
-Cat Painter「ネコの絵描きさん」
-Android, iOS/Waken
-*** Project 3
-Shadowverse
-eSports coverage materials/Cygames
-*** Do not export this project                                     :noexport:
-** Languages
-English (Native Language)
-Japanese
-** A day of my life                                                 :noexport:
-** Volunteering
-*** EVO Japan
+- Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+* Projects
+:PROPERTIES:
+:CV_ENV:   cventries
+:END:
+** PS4 Title for large publisher
+- (Ongoing, currently under NDA)
+** Cat Painter「ネコの絵描きさん」
+- Android, iOS/Waken
+** Shadowverse
+- eSports coverage materials/Cygames
+* Volunteering
+** EVO Japan
 
-* CV Column two
-** Technical Skills
-CAT Tools
-CafeTrans and OmegaT
-Subtitling
-Aegisubs
-Software
-Matlab, Microsoft Excel, Unix/Linux(Arch), Vim, Emacs
-Programming
-Python, LATEX, BASH
-** Education
-2018–2019Honours in Linguistics
-The University of New South Wales
+#+latex: \marginpar{
+* Languages
+:PROPERTIES:
+:CV_ENV:   cvskills
+:END:
+- *English* (Native Language)
+- *Japanese*
+* Education
+** Honours in Linguistics
+:PROPERTIES:
+:CV_ENV:   cvschool
+:LOCATION: The University of New South Wales
+:FROM: 2018
+:TO: 2021
+:END:
 Ongoing eye-tracking research with human participants, studying the effect of
-various types of ashcard formatting on acquisition of academic terms in a
+various types of flashcard formatting on acquisition of academic terms in a
 second language.
-2013–2017Bachelor of Arts
-The University of New South Wales
+** Bachelor of Arts
+:PROPERTIES:
+:CV_ENV:   cvschool
+:LOCATION: The University of New South Wales
+:FROM: 2013
+:TO: 2017
+:END:
 Majored in Linguistics and Japanese Studies. This included the study of
 Japanese and Japanese history and culture. The Linguistics studies focused
 on pragmatics, semantics, syntactic and morphemic analysis and phonology.
 Courses were also done in psycholinguistics and second language acquisition.
 ** My Life Philosophy                                               :noexport:
-** Achievements
-** Referees
+** Achievements                                                     :noexport:
+* Technical Skills
+:PROPERTIES:
+:CV_ENV:   cvskills
+:END:
+- CAT Tools
+- CafeTrans and OmegaT
+- Subtitling
+- Aegisubs
+- Software
+- Matlab, Microsoft Excel, Unix/Linux(Arch), Vim, Emacs
+- Programming
+- Python, LATEX, BASH
 
-* Backmatter                                                           :ignore:
+#+latex: }
+* Referees                                                           :noexport:
+
+* Backmatter                                                         :noexport:
 
 * Config                                                             :noexport:
+
+#+begin_src elisp :results no
+(org-export-to-file 'altacv "altacv.tex")
+(org-latex-compile "altacv.tex")
+#+end_src
+
+#+RESULTS:
+: /home/nanjigen/org/org-brain/projects/profile-page/altacv.pdf
 
 ** LaTeX Config
 ** Exporter Settings
 ** Macros
+
+* COMMENT local variables
+
+# Local Variables:
+# (org-export-to-file 'altacv "altacv.tex")
+# (org-latex-compile "altacv.tex")
+# End:
