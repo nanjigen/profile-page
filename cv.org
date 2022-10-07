@@ -9,11 +9,68 @@
 #+github: nanjigen
 #+gitlab:
 #+linkedin: dmotto
-#+latex_class: altacv
-#+cvcolor: blue
-#+LATEX_HEADER: \geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+#+LATEX_HEADER: \columnratio{0.6} % Set the left/right column width ratio to 6:4.
 #+LATEX_HEADER: \usepackage{luatexja}
-#+TAGS: noexport (n)
+#+TAGS: noexport(n) ignore(I)
+
+This branch is based off of the config found [[https://www.aidanscannell.com/post/org-mode-resume/][here]].
+
+* Config                                                             :noexport:
+
+#+begin_src elisp :results none
+(org-export-to-file 'altacv "altacv.tex")
+(org-latex-compile "altacv.tex")
+#+end_src
+
+** TODO Move LaTeX Config to standard export
+#+BEGIN_SRC emacs-lisp :exports none  :results none :eval always
+(add-to-list 'org-latex-classes
+             '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+% Change the page layout if you need to
+\\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% Use roboto and lato for fonts
+\\renewcommand{\\familydefault}{\\sfdefault}
+
+% Change the colours if you want to
+\\definecolor{SlateGrey}{HTML}{2E2E2E}
+\\definecolor{LightGrey}{HTML}{666666}
+\\definecolor{DarkPastelRed}{HTML}{450808}
+\\definecolor{PastelRed}{HTML}{8F0D0D}
+\\definecolor{GoldenEarth}{HTML}{E7D192}
+\\colorlet{name}{black}
+\\colorlet{tagline}{PastelRed}
+\\colorlet{heading}{DarkPastelRed}
+\\colorlet{headingrule}{GoldenEarth}
+\\colorlet{subheading}{PastelRed}
+\\colorlet{accent}{PastelRed}
+\\colorlet{emphasis}{SlateGrey}
+\\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
+\\renewcommand{\\personalinfofont}{\\footnotesize}
+\\renewcommand{\\cvsectionfont}{\\LARGE\\rmfamily\\bfseries}
+\\renewcommand{\\cvsubsectionfont}{\\large\\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\\renewcommand{\\itemmarker}{{\\small\\textbullet}}
+\\renewcommand{\\ratingmarker}{\\faCircle}
+"
+
+               ("\\cvsection{%s}" . "\\cvsection*{%s}")))
+#+END_SRC
+
+** Exporter Settings
+#+OPTIONS: toc:nil title:nil H:1
+
+** Macros
+#+MACRO: cvevent \cvevent{$1}{$2}{$3}{$4}
+#+MACRO: cvachievement \cvachievement{$1}{$2}{$3}{$4}
+#+MACRO: cvtag \cvtag{$1}
+#+MACRO: divider \par\divider
 
 ** Photo & tagline                                                  :noexport:
 ** Personal info                                                    :noexport:
@@ -90,19 +147,6 @@ Courses were also done in psycholinguistics and second language acquisition.
 
 * Backmatter                                                         :noexport:
 
-* Config                                                             :noexport:
-
-#+begin_src elisp :results no
-(org-export-to-file 'altacv "altacv.tex")
-(org-latex-compile "altacv.tex")
-#+end_src
-
-#+RESULTS:
-: /home/nanjigen/org/org-brain/projects/profile-page/altacv.pdf
-
-** LaTeX Config
-** Exporter Settings
-** Macros
 
 * COMMENT local variables
 
