@@ -131,49 +131,59 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+begin_export latex
 \begin{paracol}{2}
 #+end_export
-- (Ongoing, currently under NDA)
-** Cat Painter「ネコの絵描きさん」
-- Android, iOS/Waken
-** Shadowverse
-- eSports coverage materials/Cygames
-* Volunteering
-** EVO Japan
 
-#+latex: \marginpar{
-* Languages
-:PROPERTIES:
-:CV_ENV:   cvskills
-:END:
-- *English* (Native Language)
-- *Japanese*
-* Education
-** Honours in Linguistics
-:PROPERTIES:
-:CV_ENV:   cvschool
-:LOCATION: The University of New South Wales
-:FROM: 2018
-:TO: 2021
-:END:
+** Experience
+*** Freelance translator
+{{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+** Projects
+{{{par-div}}}
+*** PS4 Title for large publisher
+- (Ongoing, currently under NDA)
+*** Cat Painter「ネコの絵描きさん」
+- Android, iOS/Waken
+*** Shadowverse
+- eSports coverage materials/Cygames
+** Volunteering
+*** EVO Japan
+
+* CV Column two                                                        :ignore:
+#+begin_export latex
+\switchcolumn
+#+end_export
+
+** Languages
+#+begin_export latex
+% \cvsection{Languages}
+
+\cvskill{English - Native}{5}
+% \divider
+
+\cvskill{Japanese - N2}{4}
+% \divider
+
+% \cvskill{German}{3}
+
+% %% Yeah I didn't spend too much time making all the
+% %% spacing consistent... sorry. Use \smallskip, \medskip,
+% %% \bigskip, \vpsace etc to make ajustments.
+% \medskip
+#+end_export
+** Education
+*** Honours in Linguistics
+{{{cvevent(PhD\ in Bayesian Machine Learning for Robotic Control, University of Bristol, Sept 2018 - Ongoing,)}}}
 Ongoing eye-tracking research with human participants, studying the effect of
 various types of flashcard formatting on acquisition of academic terms in a
 second language.
-** Bachelor of Arts
-:PROPERTIES:
-:CV_ENV:   cvschool
-:LOCATION: The University of New South Wales
-:FROM: 2013
-:TO: 2017
-:END:
+*** Bachelor of Arts
+{{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, Sept 2018 - Ongoing,)}}}
 Majored in Linguistics and Japanese Studies. This included the study of
 Japanese and Japanese history and culture. The Linguistics studies focused
 on pragmatics, semantics, syntactic and morphemic analysis and phonology.
 Courses were also done in psycholinguistics and second language acquisition.
-** My Life Philosophy                                               :noexport:
-** Achievements                                                     :noexport:
-* Technical Skills
-:PROPERTIES:
-:CV_ENV:   cvskills
-:END:
+*** My Life Philosophy                                              :noexport:
+*** Achievements                                                    :noexport:
+** Technical Skills
 - CAT Tools
 - CafeTrans and OmegaT
 - Subtitling
