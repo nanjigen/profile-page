@@ -120,6 +120,19 @@ server {
 #}
 
 #+end_src
+** git deployment
+:PROPERTIES:
+:CREATED:  [2022-09-28 Wed 15:29]
+:ID:       bd762a86-cf35-4873-ace8-1c6ddb80c862
+:END:
+https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
+
+post-receive hook
+#+begin_src sh :tangle /ssh:nanjigen@profile-droplet:/var/repo/site.git/hooks/post-receive :tangle-mode (identity #o755)
+#!/bin/sh
+git --work-tree=/srv/www/danielotto.jp --git-dir=/var/repo/site.git checkout -f
+#+end_src
+
 * Theme
 :PROPERTIES:
 :CREATED:  [2022-09-22 Thu 16:57]
