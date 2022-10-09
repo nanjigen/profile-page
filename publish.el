@@ -39,8 +39,8 @@
  :name "posts"
  :input-pattern "posts/*.org"
  :template "post.html"
- :output "output/posts/{{ slug }}.html"
- :url "/posts/{{ slug }}.html")
+ :output "blog/posts/{{ slug }}.html"
+ :url "/blog/{{ slug }}.html")
 
 ;; route for rendering the index page of the blog
 (weblorg-route
@@ -48,7 +48,7 @@
  :input-pattern "posts/*.org"
  :input-aggregate #'weblorg-input-aggregate-all-desc
  :template "blog.html"
- :output "output/index.html"
+ :output "blog/index.html"
  :url "/")
 
 ;; route for rendering each page
