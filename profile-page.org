@@ -333,6 +333,105 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 :END:
 
 
+*** index
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:36]
+:ID:       4430ba49-0262-4777-b7a5-eb8ff9eb1122
+:END:
+#+begin_src html  :tangle theme/templates/index.html
+{# index.html --- Template for my website's index page -*- Mode: Jinja2; -*- #}
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>{{ post.title }}</h1>
+
+  {{ post.html|safe }}
+{% endblock %}
+#+end_src
+
+*** layout
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:36]
+:ID:       8c8ea744-8cf8-491b-ae38-476c864549c7
+:END:
+#+begin_src html  :tangle theme/templates/layout.html
+{# layout.html --- Base template for all other templates -*- Mode: Jinja2; -*-
+
+The blocks available in this file are:
+
+,* title: What will show within the HTML <title> tag.
+,* description: What will show within the HTML <meta> description tag.
+,* nav: Navigation bar with Links, a default is provided
+,* body: Main content which starts empty
+,* footer: Bottom links, default is provided
+
+#}
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>clarete &mdash; {% block title %}Home{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/media/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/media/img/8bitme.png">
+    <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml">
+  </head>
+  <body>
+    {% block nav %}
+      <div class="social">
+        <div class="container">
+          <ul class="badges">
+            <li>
+              <a href="mailto:lincoln@clarete.li" alt="Email">
+                <span class="fa fa-envelope-o"></span>EMail
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/clarete" target="_blank" alt="Github">
+                <span class="fa fa-github-alt"></span>Github
+              </a>
+            </li>
+            <li>
+              <a href="/blog/rss.xml" alt="RSS">
+                <span class="fa fa-rss"></span>RSS
+              </a>
+            </li>
+          </ul>
+
+          <a href="/">
+            <img class="avatar" type="image/svg+xml" src="/media/img/8bitme.svg" alt="Me in 8bit" />
+          </a>
+        </div>
+      </div>
+    {% endblock %}
+
+    <div class="post">
+      <div class="container">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+
+    <div class="footer">
+      {% block footer %}
+        <div class="bg">
+          <div class="container">
+            &#169; Lincoln Clarete &mdash; All written content on this
+            website reflects my personal opinion and it's available
+            under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+  </body>
+</html>
+#+end_src
+* publish.el
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:14]
+:ID:       8c6bdab7-8977-40b2-a575-80bdb7cf4966
+:END:
 
 The below is required to get the right dependencies
 #+begin_src elisp :tangle publish.el
