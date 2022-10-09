@@ -106,7 +106,3 @@ Courses were also done in psycholinguistics and second language acquisition.
 
 * COMMENT local variables
 
-# Local Variables:
-# (org-export-to-file 'altacv "altacv.tex")
-# (org-latex-compile "altacv.tex")
-# End:
