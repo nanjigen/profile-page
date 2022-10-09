@@ -120,6 +120,7 @@ server {
 #}
 
 #+end_src
+
 ** git deployment
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
@@ -144,8 +145,6 @@ git --work-tree=/srv/www/danielotto.jp --git-dir=/var/repo/site.git checkout -f
 
 The below is required to get the right dependencies
 #+begin_src elisp :tangle publish.el
-(require 'weblorg)
-
 ;; Guarantee the freshest version of the weblorg
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
@@ -170,11 +169,12 @@ The below is required to get the right dependencies
 
 #+begin_src elisp :tangle publish.el
 (weblorg-site
- :template-vars '(("site_name" . "Daniel Otto's site")
+ :template-vars '(("site_name" . "Daniel Otto's profile site")
                   ("site_author" "Daniel Otto")
                   ("site_email" . "translation@danielotto.jp")
-                  ("site_description" . "My personal profile and blog.")))
+                  ("site_description" . "My personal profile and blog about Linguistics, computing and translation.")))
 
+(setq weblorg-default-url "http://www.danielotto.jp")
 
 ;; route for rendering each post
 (weblorg-route
@@ -209,19 +209,3 @@ The below is required to get the right dependencies
 ;; fire the engine and export all the files declared in the routes above
 (weblorg-export)
 #+end_src
-
-* Blog
-:PROPERTIES:
-:CREATED:  [2022-09-22 Thu 16:57]
-:ID:       55081071-39a4-427b-96c3-4673de0303f3
-:END:
-** Posts
-:PROPERTIES:
-:CREATED:  [2022-09-22 Thu 16:57]
-:ID:       2b743183-2108-4514-b495-d07caefc168d
-:END:
-*** Being a translator
-:PROPERTIES:
-:CREATED:  [2022-09-22 Thu 16:57]
-:ID:       fc0b792c-b1a1-4b75-9c7a-26bf5158a083
-:END:

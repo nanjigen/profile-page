@@ -19,14 +19,14 @@
   :config
   (setq org-html-htmlize-output-type 'css))
 
-(setq weblorg-default-url "http://www.danielotto.jp")
-
 (weblorg-site
- :template-vars '(("site_name" . "Daniel Otto's site")
+ :base-url '("danielotto.jp")
+ :template-vars '(("site_name" . "Daniel Otto's profile site")
                   ("site_author" "Daniel Otto")
                   ("site_email" . "translation@danielotto.jp")
-                  ("site_description" . "My personal profile and blog.")))
+                  ("site_description" . "My personal profile and blog about Linguistics, computing and translation.")))
 
+(setq weblorg-default-url "http://www.danielotto.jp")
 
 ;; route for rendering each post
 (weblorg-route
