@@ -1,0 +1,14 @@
+#+OPTIONS: toc:nil num:nil
+#+TITLE: Hi! I'm Daniel
+
+------
+
+* Links
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:12]
+:ID:       543b96e7-ca83-4048-b960-c2c169adf385
+:END:
+
+  * [[url_for:blog][Blog]]
+  * [[https://github.com/nanjigen][GitHub]]
+  * [[mailto:translation@danielotto.jp][Email]]
