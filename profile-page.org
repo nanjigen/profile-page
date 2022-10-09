@@ -370,7 +370,7 @@ The blocks available in this file are:
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>clarete &mdash; {% block title %}Home{% endblock %}</title>
+    <title>Daniel &mdash; {% block title %}Home{% endblock %}</title>
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/media/css/main.css">
@@ -389,7 +389,7 @@ The blocks available in this file are:
               </a>
             </li>
             <li>
-              <a href="https://github.com/clarete" target="_blank" alt="Github">
+              <a href="https://github.com/nanjigen" target="_blank" alt="Github">
                 <span class="fa fa-github-alt"></span>Github
               </a>
             </li>

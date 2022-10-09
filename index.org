@@ -1,6 +1,20 @@
 #+OPTIONS: toc:nil num:nil
 #+TITLE: Hi! I'm Daniel
 
+ 日英ゲームローカライザー
+
+JtoE freelance translator and Assistant Linguistics Researcher
+
+A freelance Japanese to English translator working in the games industry, having lived and worked in Tokyo and performed localisation and LQA for some of the largest Japanese publishers. Aside from a specialisation in games and creative writing, I'm a researcher in the field of Linguistics; in the area of second language acquisition where I ply my understanding of Python and Computational Linguistics. I'm based in Tokyo, Japan.
+
+My main tool of use is the venerable Emacs (in the form of the [[https://github.com/hlissner/doom-emacs][Doom Emacs]] distribution). Emacs acts as a textual interface, overlaying and assisting my work in various key translation application/tools. This allows me to use Vim-like modal editing in programs such as OmegaT, memoQ and is often the case in games localisation, Microsoft Excel.
+
+# If curiosity has caught your CAT tool, you can see how I work [[workflow.org][here].
+
+If you have any inquires or would like to work with me, contact me at:
+mailto:translation@danielotto.jp
+
+[[file:../pdf/Daniel-Otto-cv.pdf][My C.V.]]
 ------
 
 * Links
