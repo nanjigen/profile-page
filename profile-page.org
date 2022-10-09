@@ -326,6 +326,13 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 }
 #+end_src
 
+** Templates
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:23]
+:ID:       7d8f1b58-b897-46ac-a990-20fe9304c4d8
+:END:
+
+
 
 The below is required to get the right dependencies
 #+begin_src elisp :tangle publish.el
