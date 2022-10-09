@@ -12,6 +12,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package rainbow-delimiters :config :ensure t)
+
 ;; Install and configure dependencies
 (use-package templatel :ensure t)
 (use-package htmlize

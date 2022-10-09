@@ -149,25 +149,25 @@ git --work-tree=/srv/www/danielotto.jp --git-dir=/var/repo/site.git checkout -f
 @import "colors.css" screen;
 
 :root {
-    --background: var(--theme-gruvbox-background);
-    --foreground: var(--theme-gruvbox-light-1);
-    --foreground-secondary: #aaa;
+    --background: var(--theme-dracula-background);
+    --foreground: var(--theme-dracula-light-1);
+    --foreground-secondary: #bfbfbf;
 
     /* --- --- --- Syntax Highlighting for Code Sections --- --- ---  */
-    ---code-background:           var(--theme-gruvbox-background);
-    ---code-foreground:           var(--theme-gruvbox-foreground);
-    ---code-builtin:              var(--theme-gruvbox-builtin);
-    ---code-comment:              var(--theme-gruvbox-comment);
-    ---code-doc:                  var(--theme-gruvbox-doc);
-    ---code-function-name:        var(--theme-gruvbox-function-name);
-    ---code-keyword:              var(--theme-gruvbox-keyword);
-    ---code-string:               var(--theme-gruvbox-string);
-    ---code-type:                 var(--theme-gruvbox-type);
-    ---code-variable-name:        var(--theme-gruvbox-variable-name);
-    ---code-rainbow1:             var(--theme-gruvbox-rainbow1);
-    ---code-rainbow2:             var(--theme-gruvbox-rainbow2);
-    ---code-rainbow3:             var(--theme-gruvbox-rainbow3);
-    ---code-rainbow4:             var(--theme-gruvbox-rainbow4);
+    ---code-background:           var(--theme-dracula-background);
+    ---code-foreground:           var(--theme-dracula-foreground);
+    ---code-builtin:              var(--theme-dracula-builtin);
+    ---code-comment:              var(--theme-dracula-comment);
+    ---code-doc:                  var(--theme-dracula-doc);
+    ---code-function-name:        var(--theme-dracula-function-name);
+    ---code-keyword:              var(--theme-dracula-keyword);
+    ---code-string:               var(--theme-dracula-string);
+    ---code-type:                 var(--theme-dracula-type);
+    ---code-variable-name:        var(--theme-dracula-variable-name);
+    ---code-rainbow1:             var(--theme-dracula-rainbow1);
+    ---code-rainbow2:             var(--theme-dracula-rainbow2);
+    ---code-rainbow3:             var(--theme-dracula-rainbow3);
+    ---code-rainbow4:             var(--theme-dracula-rainbow4);
 }
 
 body                             { background: var(--background); color: var(--foreground); }
@@ -294,35 +294,67 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 :END:
 #+begin_src css :tangle theme/static/css/colors.css
 :root {
-    --theme-gruvbox-background:    #282828;
-    --theme-gruvbox-foreground:    #ebdbb2;
-    --theme-gruvbox-dark-1:        #3c3836;
-    --theme-gruvbox-dark-2:        #504945;
-    --theme-gruvbox-dark-3:        #665c54;
-    --theme-gruvbox-dark-4:        #7c6f64;
-    --theme-gruvbox-light-1:       #fdf4c1;
-    --theme-gruvbox-light-2:       #d5c4a1;
-    --theme-gruvbox-light-3:       #bdae93;
-    --theme-gruvbox-light-4:       #a89984;
-    --theme-gruvbox-red:           #fb4934;
-    --theme-gruvbox-orange:        #fe8019;
-    --theme-gruvbox-yellow:        #fabd2f;
-    --theme-gruvbox-green:         #b8bb26;
-    --theme-gruvbox-aqua:          #8ec07c;
-    --theme-gruvbox-blue:          #83a598;
-    --theme-gruvbox-purple:        #d3869b;
-    --theme-gruvbox-builtin:       var(--theme-gruvbox-orange);
-    --theme-gruvbox-comment:       var(--theme-gruvbox-dark-4);
-    --theme-gruvbox-doc:           var(--theme-gruvbox-dark-4);
-    --theme-gruvbox-function-name: var(--theme-gruvbox-yellow);
-    --theme-gruvbox-keyword:       var(--theme-gruvbox-red);
-    --theme-gruvbox-string:        var(--theme-gruvbox-green);
-    --theme-gruvbox-type:          var(--theme-gruvbox-purple);
-    --theme-gruvbox-variable-name: var(--theme-gruvbox-blue);
-    --theme-gruvbox-rainbow1:      #458588;
-    --theme-gruvbox-rainbow2:      #b16286;
-    --theme-gruvbox-rainbow3:      #8ec07c;
-    --theme-gruvbox-rainbow4:      #d65d0e;
+    --theme-dracula-background              : #141d28;
+    --theme-dracula-background-secondary-alt: #44475a;
+    --theme-dracula-background-secondary    : #1e1f29;
+    --theme-dracula-foreground              : #f8f8f2;
+    --theme-dracula-sidebar-background      : #233346;
+    /*COLOURS */
+    --theme-dracula-green                   : #50fa7b;
+    --theme-dracula-violet                  : #bd93f9;
+    --theme-dracula-magenta                 : #ff79c6;
+    --theme-dracula-orange                  : #ffb86c;
+    --theme-dracula-cyan:                     #8be9fd;
+    --theme-dracula-red:                      #ff5555;
+    --theme-dracula-yellow:                   #f1fa8c;
+    --theme-dracula-body-text:               : #C3C3C3;
+    --theme-dracula-comment:                 : #6272a4;
+    --theme-dracula-doc:                    var(--theme-dracula-cyan);
+    --theme-dracula-function-name:          var(--theme-dracula-green);
+    --theme-dracula-keyword:                var(--theme-dracula-magenta);
+    --theme-dracula-string:                 var(--theme-dracula-yellow);
+    --theme-dracula-type:                   var(--theme-dracula-violet);
+    --theme-dracula-rainbow1:               var(--theme-dracula-magenta);
+    --theme-dracula-rainbow2:               var(--theme-dracula-violet);
+    --theme-dracula-rainbow3:               var(--theme-dracula-green);
+    --theme-dracula-rainbow4:               var(--theme-dracula-yellow);
+    --theme-dracula-variable-name:          var(--theme-dracula-magenta);
+    --theme-dracula-page-links              : #C26EFF;
+    --theme-dracula-attributes-color        : #FFFF80;
+    --theme-dracula-external-links          : #7CE973;
+    --theme-dracula-links-hover             : #92FFFF;
+    --theme-dracula-hashtags                : #FFD17E;
+    --theme-dracula-italics-color           : #FF7EA2;
+    --theme-dracula-bold-color              : #FF4E4E;
+    --theme-dracula-highlight-text-color    : #47405E;
+    --theme-dracula-highlighter             : #FFFF80;
+    --theme-dracula-sidebar-text            : #F2F2F2;
+    --theme-dracula-page-heading            : #FFBE49;
+    --theme-dracula-daily-heading           : #FFCA6A;
+    --theme-dracula-headings                : #F2F2F2;
+    --theme-dracula-bullets                 : #7A6DAA;
+    --theme-dracula-closed-bullets          : #3E445D;
+    --theme-dracula-references              : #9E8DDB;
+    --theme-dracula-block-reference-text    : #FF9580;
+    --theme-dracula-namespaces              : #5EB9FF;
+    --theme-dracula-all-pages-mentions      : #FF9580;
+    --theme-dracula-cursor                  : #F2F2F2;
+    --theme-dracula-icons                   : #FBCC77;
+    --theme-dracula-icons-hover             : #81FFEA;
+    --theme-dracula-filter-icon             : #C26EFF;
+    /* DROPDOWN MENU */
+    --theme-dracula-dropdown-menu-background: #1E2B3B;
+    --theme-dracula-dropdown-menu-highlight : #454259;
+    --theme-dracula-dropdown-menu-text      : #F2F2F2;
+    --theme-dracula-dropdown-newpage        : #9580FF;
+    /* SEARCH BAR */
+    --theme-dracula-search-bar-background   : #19191E;
+    --theme-dracula-search-bar-text         : #F2F2F2;
+    /* KANBAN CARD COLORS */
+    --theme-dracula-kanban-main-background  : #1B1A23;
+    --theme-dracula-kanban-column-background: #2A2C37;
+    --theme-dracula-kanban-card-background  : #1B1A23;
+    --theme-dracula-kanban-text-hover       : #81FFEA;
 }
 #+end_src
 
@@ -447,6 +479,8 @@ The below is required to get the right dependencies
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(use-package rainbow-delimiters :config :ensure t)
 
 ;; Install and configure dependencies
 (use-package templatel :ensure t)
