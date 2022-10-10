@@ -1,9 +1,9 @@
 #+TITLE: JtoE Games Translator
 #+AUTHOR: Daniel Otto
 
-#+TAGS: noexport(n) ignore(I)
+#+TAGS: noexport(n) ignore(i)
 
-* Config                                                      :noexport:ignore:
+* Config                                                   :noexport:ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       36577db3-9870-4b34-8d27-5a637df99fd1
@@ -188,7 +188,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       dbc07b2d-9bfa-4f95-9215-719a662627b6
 :END:
-** config
+** config                                                             :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c39d696c-135c-4412-bc45-7daeb5faa66d
@@ -203,36 +203,40 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       bcd96d90-cef6-40c3-9bdd-0e7ab90bdf92
 :END:
-*** Freelance translator
+*** Freelance translator                                             :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
 :END:
 {{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
 Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+
+{{{par-div}}}
 ** Projects
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c250d349-dcb9-4186-b3e7-37580e62d910
 :END:
-{{{par-div}}}
-*** PS4 Title for large publisher
+*** PS4 Title for large publisher                                    :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
 :END:
+{{{cvevent(PS4 Title for large publisher, Sony, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
 - (Ongoing, currently under NDA)
-*** Cat Painter「ネコの絵描きさん」
+*** Cat Painter「ネコの絵描きさん」                                  :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
 :END:
+{{{cvevent(Cat Painter「ネコの絵描きさん」, Waken, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
 - Android, iOS/Waken
-*** Shadowverse
+*** Shadowverse                                                      :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       aeff5286-649f-4f33-8993-c1c8b75a2508
 :END:
+{{{cvevent(Shadowverse, Cygames, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
 - eSports coverage materials/Cygames
 ** Volunteering
 :PROPERTIES:
