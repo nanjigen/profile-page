@@ -3,7 +3,7 @@
 
 :root {
     --background: var(--theme-dracula-background);
-    --foreground: var(--theme-dracula-light-1);
+    --foreground: var(--theme-dracula-foreground);
     --foreground-secondary: #bfbfbf;
 
     /* --- --- --- Syntax Highlighting for Code Sections --- --- ---  */
