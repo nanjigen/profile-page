@@ -51,6 +51,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 \\definecolor{dracula-foreground}{HTML}{f8f8f2}
 \\definecolor{dracula-sidebar-background}{HTML}{233346}
 \\definecolor{dracula-green}{HTML}{50fa7b}
+\\definecolor{dracula-dark-green}{HTML}{b8bb26}
 \\definecolor{dracula-violet}{HTML}{bd93f9}
 \\definecolor{dracula-magenta}{HTML}{ff79c6}
 \\definecolor{dracula-orange}{HTML}{ffb86c}
@@ -84,7 +85,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 \\definecolor{dracula-filter-icon}{HTML}{C26EFF}
 \\pagecolor{white}
 \\colorlet{name}{dracula-violet}
-\\colorlet{tagline}{dracula-red}
+\\colorlet{tagline}{dracula-comment}
 \\colorlet{heading}{dracula-namespaces}
 \\colorlet{headingrule}{dracula-bullets}
 \\colorlet{subheading}{dracula-orange}
