@@ -29,7 +29,7 @@ hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 .social .badges      { float: right; width: 155px; font-size: 36px; list-style: none; display: block; }
 .social .badges li   { padding-left: 8px; float: left; }
 .social .badges a    { float: left; display: block; width: 36px; height: 36px; overflow: hidden; margin-left: 5px; padding: 1px;
-                       color: #7c6f64; }
+                       color: #50fa7b; }
 .social .badges a:hover { color: #bd93f9; }
 .social .badges a span  { height: 50px; }
 
