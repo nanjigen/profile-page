@@ -1,0 +1,356 @@
+#+TITLE: JtoE Games Translator
+#+AUTHOR: Daniel Otto
+
+#+TAGS: noexport(n) ignore(i)
+
+* Config                                                   :noexport:ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       36577db3-9870-4b34-8d27-5a637df99fd1
+:END:
+
+This branch is based off of the config found [[https://www.aidanscannell.com/post/org-mode-resume/][here]].
+
+#+begin_src elisp :results none
+(org-export-to-file 'altacv "altacv.tex")
+(org-latex-compile "altacv.tex")
+#+end_src
+
+** TODO Guix
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       07be475d-683d-476f-b751-d359be557d93
+:END:
+
+#+begin_src scheme
+"font-google-roboto"
+"font-lato"
+"font-awesome"
+#+end_src
+
+** TODO Move LaTeX Config to standard export
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e6b39d7d-2964-477d-94cc-22a3aba9ddbb
+:END:
+#+BEGIN_SRC emacs-lisp :exports none  :results none :eval always
+(add-to-list 'org-latex-classes
+             '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+% Change the page layout if you need to
+\\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% Use roboto and lato for fonts
+\\renewcommand{\\familydefault}{\\sfdefault}
+
+% Change the colours if you want to
+\\RequirePackage{xcolor}
+\\definecolor{dracula-background}{HTML}{141d28}
+\\definecolor{dracula-background-secondary-alt}{HTML}{44475a}
+\\definecolor{dracula-background-secondary}{HTML}{1e1f29}
+\\definecolor{dracula-foreground}{HTML}{f8f8f2}
+\\definecolor{dracula-sidebar-background}{HTML}{233346}
+\\definecolor{dracula-green}{HTML}{50fa7b}
+\\definecolor{dracula-violet}{HTML}{bd93f9}
+\\definecolor{dracula-magenta}{HTML}{ff79c6}
+\\definecolor{dracula-orange}{HTML}{ffb86c}
+\\definecolor{dracula-cyan}{HTML}{8be9fd}
+\\definecolor{dracula-red}{HTML}{ff5555}
+\\definecolor{dracula-yellow}{HTML}{f1fa8c}
+\\definecolor{dracula-body-text}{HTML}{C3C3C3}
+\\definecolor{dracula-comment}{HTML}{6272a4}
+\\definecolor{dracula-page-links}{HTML}{C26EFF}
+\\definecolor{dracula-attributes-color}{HTML}{FFFF80}
+\\definecolor{dracula-external-links}{HTML}{7CE973}
+\\definecolor{dracula-links-hover}{HTML}{92FFFF}
+\\definecolor{dracula-hashtags}{HTML}{FFD17E}
+\\definecolor{dracula-italics-color}{HTML}{FF7EA2}
+\\definecolor{dracula-bold-color}{HTML}{FF4E4E}
+\\definecolor{dracula-highlight-text-color}{HTML}{47405E}
+\\definecolor{dracula-highlighter}{HTML}{FFFF80}
+\\definecolor{dracula-sidebar-text}{HTML}{F2F2F2}
+\\definecolor{dracula-page-heading}{HTML}{FFBE49}
+\\definecolor{dracula-daily-heading}{HTML}{FFCA6A}
+\\definecolor{dracula-headings}{HTML}{F2F2F2}
+\\definecolor{dracula-bullets}{HTML}{7A6DAA}
+\\definecolor{dracula-closed-bullets}{HTML}{3E445D}
+\\definecolor{dracula-references}{HTML}{9E8DDB}
+\\definecolor{dracula-block-reference-text}{HTML}{FF9580}
+\\definecolor{dracula-namespaces}{HTML}{5EB9FF}
+\\definecolor{dracula-all-pages-mentions}{HTML}{FF9580}
+\\definecolor{dracula-cursor}{HTML}{F2F2F2}
+\\definecolor{dracula-icons}{HTML}{FBCC77}
+\\definecolor{dracula-icons-hover}{HTML}{81FFEA}
+\\definecolor{dracula-filter-icon}{HTML}{C26EFF}
+\\pagecolor{white}
+\\colorlet{name}{dracula-violet}
+\\colorlet{tagline}{dracula-red}
+\\colorlet{heading}{dracula-namespaces}
+\\colorlet{headingrule}{dracula-bullets}
+\\colorlet{subheading}{dracula-orange}
+\\colorlet{accent}{dracula-page-links}
+\\colorlet{emphasis}{dracula-comment}
+\\colorlet{body}{dracula-background}
+
+% Change some fonts, if necessary
+\\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
+\\renewcommand{\\personalinfofont}{\\footnotesize}
+\\renewcommand{\\cvsectionfont}{\\LARGE\\rmfamily\\bfseries}
+\\renewcommand{\\cvsubsectionfont}{\\large\\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\\renewcommand{\\itemmarker}{{\\small\\textbullet}}
+\\renewcommand{\\ratingmarker}{\\faCircle}
+"
+
+               ("\\cvsection{%s}" . "\\cvsection*{%s}")
+               ("\\cvevent{%s}" . "\\cvevent*{%s}")))
+(setq org-latex-packages-alist 'nil)
+(setq org-latex-default-packages-alist
+      '(("rm" "roboto"  t)
+        ("defaultsans" "lato" t)
+        ("" "paracol" t)
+        ))
+#+END_SRC
+#+LATEX_HEADER: \columnratio{0.6} % Set the left/right column width ratio to 6:4.
+#+LATEX_HEADER: \usepackage{luatexja}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{longtable}
+#+LATEX_HEADER: \usepackage{wrapfig}
+#+LATEX_HEADER: \usepackage{rotating}
+#+LATEX_HEADER: \usepackage[normalem]{ulem}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{amssymb}
+#+LATEX_HEADER: \usepackage{capt-of}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_CLASS: altacv
+
+** Exporter Settings
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       cc6d2f8b-c29f-45c9-bedd-6b54f2269155
+:END:
+#+AUTHOR: Daniel Otto
+#+EXPORT_FILE_NAME: cv.pdf
+#+OPTIONS: toc:nil title:nil H:1
+
+** Macros
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       181a968d-d2f2-4669-8d43-0097dcd6ebb1
+:END:
+#+MACRO: cvevent \cvevent{$1}{$2}{$3}{$4}
+#+MACRO: cvachievement \cvachievement{$1}{$2}{$3}{$4}
+#+MACRO: cvtag \cvtag{$1}
+#+MACRO: divider \divider
+#+MACRO: par-div \par\divider
+#+MACRO: new-page \newpage
+
+* CV header                                                            :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       28b6a33c-d0af-4eaf-ba88-f41b0a4f24e3
+:END:
+** Photo & tagline                                                    :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       1f7dd543-9f68-4a9e-a000-27ae33fa036e
+:END:
+#+begin_export latex
+\name{Daniel Otto}
+% \photoR{2.8cm}{aidan_portrait.jpeg}
+\tagline{Games Localiser}
+#+end_export
+
+** Personal info                                                      :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       968a66d1-db63-4ec1-8599-624eb6013d2f
+:END:
+#+begin_export latex
+\personalinfo{
+  \homepage{www.danielotto.jp}
+  \email{translation@danielotto.jp}
+  \phone{+81 80 7650 1991}
+  \location{Tokyo, Japan}
+  \github{nanjigen}
+  \linkedin{dmotto}
+  \dob{1991/10/18}
+}
+\makecvheader
+#+end_export
+
+* CV Column one                                                        :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       dbc07b2d-9bfa-4f95-9215-719a662627b6
+:END:
+** config                                                             :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c39d696c-135c-4412-bc45-7daeb5faa66d
+:END:
+
+#+begin_export latex
+\begin{paracol}{2}
+#+end_export
+
+** Experience
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       bcd96d90-cef6-40c3-9bdd-0e7ab90bdf92
+:END:
+*** Freelance translator                                             :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
+:END:
+{{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+
+{{{par-div}}}
+** Projects
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c250d349-dcb9-4186-b3e7-37580e62d910
+:END:
+*** PS4 Title for large publisher                                    :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
+:END:
+{{{cvevent(PS4 Title for large publisher, Sony, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+- (Ongoing, currently under NDA)
+*** Cat Painter「ネコの絵描きさん」                                  :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
+:END:
+{{{cvevent(Cat Painter「ネコの絵描きさん」, Waken, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+- Android, iOS/Waken
+*** Shadowverse                                                      :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       aeff5286-649f-4f33-8993-c1c8b75a2508
+:END:
+{{{cvevent(Shadowverse, Cygames, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+- eSports coverage materials/Cygames
+** Volunteering
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       37d186b1-5335-460f-b5b6-dc327832c8a0
+:END:
+*** EVO Japan
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       d7cd48e6-c377-4c09-a27a-957e92939eb2
+:END:
+
+* CV Column two                                                        :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       2fefaa8b-614e-49fe-bfa6-7d9e20753f83
+:END:
+#+begin_export latex
+\switchcolumn
+#+end_export
+
+** Languages
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       3c16182a-6709-4342-b3b9-eee0d26eadc4
+:END:
+#+begin_export latex
+% \cvsection{Languages}
+
+\cvskill{English - Native}{5}
+% \divider
+
+\cvskill{Japanese - N2}{4}
+% \divider
+
+% \cvskill{German}{3}
+
+% %% Yeah I didn't spend too much time making all the
+% %% spacing consistent... sorry. Use \smallskip, \medskip,
+% %% \bigskip, \vpsace etc to make ajustments.
+% \medskip
+#+end_export
+** Education
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       4e5d2fb3-bfe6-4498-b00b-63bd1d2597d6
+:END:
+*** Honours in Linguistics
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       4f40368f-762a-4961-8429-80f3319bf545
+:END:
+{{{cvevent(PhD\ in Bayesian Machine Learning for Robotic Control, University of Bristol, Sept 2018 - Ongoing,)}}}
+Ongoing eye-tracking research with human participants, studying the effect of
+various types of flashcard formatting on acquisition of academic terms in a
+second language.
+*** Bachelor of Arts
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       3c21d51e-91e9-4c97-a082-006593c74a40
+:END:
+{{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, Sept 2018 - Ongoing,)}}}
+Majored in Linguistics and Japanese Studies. This included the study of
+Japanese and Japanese history and culture. The Linguistics studies focused
+on pragmatics, semantics, syntactic and morphemic analysis and phonology.
+Courses were also done in psycholinguistics and second language acquisition.
+*** My Life Philosophy                                              :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       1f5ac63e-aefb-4a7a-bf22-81b30b575368
+:END:
+*** Achievements                                                    :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c706263e-1aa0-4790-8c48-346e18ae49f1
+:END:
+** Technical Skills
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       9eb06397-8706-4782-8e25-64cf64187d5f
+:END:
+- CAT Tools
+- CafeTrans and OmegaT
+- Subtitling
+- Aegisubs
+- Software
+- Matlab, Microsoft Excel, Unix/Linux(Arch), Vim, Emacs
+- Programming
+- Python, LATEX, BASH
+
+** Referees                                                         :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       8223ddb9-633b-4585-9dcf-43417cff1618
+:END:
+** Backmatter                                                         :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       2cb04e74-b2f6-45aa-af9d-2e12d1df3af1
+:END:
+
+#+begin_export latex
+\end{paracol}
+#+end_export
+
+** No export                                                        :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       a8e3b403-76d9-4a3e-b763-7a8c432868eb
+:END:
+;* COMMENT local variables
+
+;# Local Variables:
+;# org-latex-with-hyperref: nil
+;# org-latex-packages-alist: nil
+;# org-latex-default-packages-alist: (("rm" "roboto"  t) ("defaultsans" "lato" t) ("" "paracol" t)))
+;# End:
