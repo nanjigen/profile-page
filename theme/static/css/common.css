@@ -35,7 +35,7 @@ hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 
 /* Footer */
 .footer              { font-size: .8em; margin: 0; }
-.footer .email-link  { text-align: center; font-size: 30px; color: #666; padding: 40px 0; }
+.footer .email-link  { text-align: center; font-size: 30px; color: #44475a; padding: 40px 0; }
 .footer .bg          { background: #44475a; padding: 40px 0; }
 .footer a            { color: #000; text-decoration: none; }
 .footer a:hover      { text-decoration: underline; background: transparent; }

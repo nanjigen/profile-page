@@ -244,8 +244,8 @@ hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 
 /* Footer */
 .footer              { font-size: .8em; margin: 0; }
-.footer .email-link  { text-align: center; font-size: 30px; color: #666; padding: 40px 0; }
-.footer .bg          { background: #3c3836; padding: 40px 0; }
+.footer .email-link  { text-align: center; font-size: 30px; color: #44475a; padding: 40px 0; }
+.footer .bg          { background: #44475a; padding: 40px 0; }
 .footer a            { color: #000; text-decoration: none; }
 .footer a:hover      { text-decoration: underline; background: transparent; }
 
@@ -425,12 +425,16 @@ The blocks available in this file are:
               </a>
             </li>
             <li>
+              <a href="https://linkedin/dmotto" target="_blank" alt="LinkedIn">
+                <span class="fa fa-linkedin"></span>LinkedIn
+              </a>
+            </li>
+            <li>
               <a href="/blog/rss.xml" alt="RSS">
                 <span class="fa fa-rss"></span>RSS
               </a>
             </li>
           </ul>
-
           <a href="/">
             <img class="avatar" type="image/svg+xml" src="/static/img/lambda-in-8bit.svg" alt="lambda" />
           </a>
