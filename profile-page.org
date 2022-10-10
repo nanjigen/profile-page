@@ -234,12 +234,12 @@ hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 /* Top bar with the badges */
 .social              { margin: 60px 0; }
 .social .avatar      { width: 100px; height: 100px; display: block; margin: 0 auto; float: left;
-                       background-color: #fb4934; border-radius: 10px; padding: 6px 4px; }
+                       background-color: #bd93f9; border-radius: 10px; padding: 6px 4px; }
 .social .badges      { float: right; width: 155px; font-size: 36px; list-style: none; display: block; }
 .social .badges li   { padding-left: 8px; float: left; }
 .social .badges a    { float: left; display: block; width: 36px; height: 36px; overflow: hidden; margin-left: 5px; padding: 1px;
                        color: #7c6f64; }
-.social .badges a:hover { color: #fb4934; }
+.social .badges a:hover { color: #bd93f9; }
 .social .badges a span  { height: 50px; }
 
 /* Footer */
