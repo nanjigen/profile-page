@@ -4,6 +4,10 @@
 #+TAGS: noexport(n) ignore(I)
 
 * Config                                                      :noexport:ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       36577db3-9870-4b34-8d27-5a637df99fd1
+:END:
 
 This branch is based off of the config found [[https://www.aidanscannell.com/post/org-mode-resume/][here]].
 
@@ -13,6 +17,10 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+end_src
 
 ** TODO Guix
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       07be475d-683d-476f-b751-d359be557d93
+:END:
 
 #+begin_src scheme
 "font-google-roboto"
@@ -21,6 +29,10 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+end_src
 
 ** TODO Move LaTeX Config to standard export
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e6b39d7d-2964-477d-94cc-22a3aba9ddbb
+:END:
 #+BEGIN_SRC emacs-lisp :exports none  :results none :eval always
 (add-to-list 'org-latex-classes
              '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
@@ -91,11 +103,19 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+LATEX_CLASS: altacv
 
 ** Exporter Settings
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       cc6d2f8b-c29f-45c9-bedd-6b54f2269155
+:END:
 #+AUTHOR: Daniel Otto
 #+EXPORT_FILE_NAME: cv.pdf
 #+OPTIONS: toc:nil title:nil H:1
 
 ** Macros
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       181a968d-d2f2-4669-8d43-0097dcd6ebb1
+:END:
 #+MACRO: cvevent \cvevent{$1}{$2}{$3}{$4}
 #+MACRO: cvachievement \cvachievement{$1}{$2}{$3}{$4}
 #+MACRO: cvtag \cvtag{$1}
@@ -104,7 +124,15 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+MACRO: new-page \newpage
 
 * CV header                                                            :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       28b6a33c-d0af-4eaf-ba88-f41b0a4f24e3
+:END:
 ** Photo & tagline                                                    :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       1f7dd543-9f68-4a9e-a000-27ae33fa036e
+:END:
 #+begin_export latex
 \name{Daniel Otto}
 % \photoR{2.8cm}{aidan_portrait.jpeg}
@@ -112,6 +140,10 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+end_export
 
 ** Personal info                                                      :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       968a66d1-db63-4ec1-8599-624eb6013d2f
+:END:
 #+begin_export latex
 \personalinfo{
   \homepage{www.danielotto.jp}
@@ -126,33 +158,81 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+end_export
 
 * CV Column one                                                        :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       dbc07b2d-9bfa-4f95-9215-719a662627b6
+:END:
 ** config
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c39d696c-135c-4412-bc45-7daeb5faa66d
+:END:
 
 #+begin_export latex
 \begin{paracol}{2}
 #+end_export
 
 ** Experience
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       bcd96d90-cef6-40c3-9bdd-0e7ab90bdf92
+:END:
 *** Freelance translator
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
+:END:
 {{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
 Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
 ** Projects
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c250d349-dcb9-4186-b3e7-37580e62d910
+:END:
 {{{par-div}}}
 *** PS4 Title for large publisher
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
+:END:
 - (Ongoing, currently under NDA)
 *** Cat Painter「ネコの絵描きさん」
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
+:END:
 - Android, iOS/Waken
 *** Shadowverse
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       aeff5286-649f-4f33-8993-c1c8b75a2508
+:END:
 - eSports coverage materials/Cygames
 ** Volunteering
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       37d186b1-5335-460f-b5b6-dc327832c8a0
+:END:
 *** EVO Japan
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       d7cd48e6-c377-4c09-a27a-957e92939eb2
+:END:
 
 * CV Column two                                                        :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       2fefaa8b-614e-49fe-bfa6-7d9e20753f83
+:END:
 #+begin_export latex
 \switchcolumn
 #+end_export
 
 ** Languages
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       3c16182a-6709-4342-b3b9-eee0d26eadc4
+:END:
 #+begin_export latex
 % \cvsection{Languages}
 
@@ -170,20 +250,44 @@ Japanese to English game localisation and linguistic quality assurance over both
 % \medskip
 #+end_export
 ** Education
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       4e5d2fb3-bfe6-4498-b00b-63bd1d2597d6
+:END:
 *** Honours in Linguistics
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       4f40368f-762a-4961-8429-80f3319bf545
+:END:
 {{{cvevent(PhD\ in Bayesian Machine Learning for Robotic Control, University of Bristol, Sept 2018 - Ongoing,)}}}
 Ongoing eye-tracking research with human participants, studying the effect of
 various types of flashcard formatting on acquisition of academic terms in a
 second language.
 *** Bachelor of Arts
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       3c21d51e-91e9-4c97-a082-006593c74a40
+:END:
 {{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, Sept 2018 - Ongoing,)}}}
 Majored in Linguistics and Japanese Studies. This included the study of
 Japanese and Japanese history and culture. The Linguistics studies focused
 on pragmatics, semantics, syntactic and morphemic analysis and phonology.
 Courses were also done in psycholinguistics and second language acquisition.
 *** My Life Philosophy                                              :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       1f5ac63e-aefb-4a7a-bf22-81b30b575368
+:END:
 *** Achievements                                                    :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       c706263e-1aa0-4790-8c48-346e18ae49f1
+:END:
 ** Technical Skills
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       9eb06397-8706-4782-8e25-64cf64187d5f
+:END:
 - CAT Tools
 - CafeTrans and OmegaT
 - Subtitling
@@ -194,34 +298,29 @@ Courses were also done in psycholinguistics and second language acquisition.
 - Python, LATEX, BASH
 
 ** Referees                                                         :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       8223ddb9-633b-4585-9dcf-43417cff1618
+:END:
 ** Backmatter                                                         :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       2cb04e74-b2f6-45aa-af9d-2e12d1df3af1
+:END:
 
 #+begin_export latex
 \end{paracol}
 #+end_export
 
 ** No export                                                        :noexport:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       a8e3b403-76d9-4a3e-b763-7a8c432868eb
+:END:
 ;* COMMENT local variables
 
-<<<<<<< HEAD
-#+begin_src elisp :results no
-(org-export-to-file 'altacv "altacv.tex")
-(org-latex-compile "altacv.tex")
-#+end_src
-
-#+RESULTS:
-: /home/nanjigen/org/org-brain/projects/profile-page/altacv.pdf
-
-** LaTeX Config
-** Exporter Settings
-** Macros
-
-* COMMENT local variables
-
-=======
 ;# Local Variables:
 ;# org-latex-with-hyperref: nil
 ;# org-latex-packages-alist: nil
 ;# org-latex-default-packages-alist: (("rm" "roboto"  t) ("defaultsans" "lato" t) ("" "paracol" t)))
 ;# End:
->>>>>>> LaTeX-templates/altacv
