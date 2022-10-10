@@ -14,7 +14,7 @@ My main tool of use is the venerable Emacs (in the form of the [[https://github.
 If you have any inquires or would like to work with me, contact me at:
 mailto:translation@danielotto.jp
 
-[[file:../pdf/Daniel-Otto-cv.pdf][My C.V.]]
+[[file:../media/cv.pdf][My C.V.]]
 ------
 
 * Links
