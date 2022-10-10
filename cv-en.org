@@ -203,15 +203,23 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       bcd96d90-cef6-40c3-9bdd-0e7ab90bdf92
 :END:
+*** English Teacher                                                  :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 19:07]
+:ID:       594ec195-13a8-4f7b-b24a-defc3840765b
+:END:
+{{{cvevent(English Teacher, NOVA, April 2022 -- Ongoing, Tokyo\, Japan)}}}
+Secured a Humanities visa entering Japan at the cusp of the easing of border control measures. Plied my understanding of linguistics and specialisation in second language acquisition teaching English to Japanese nationals.
+{{{par-div}}}
+
 *** Freelance translator                                             :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
 :END:
-{{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+{{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Sydney)}}}
 Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
 
-{{{par-div}}}
 ** Projects
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
@@ -222,33 +230,41 @@ Japanese to English game localisation and linguistic quality assurance over both
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
 :END:
-{{{cvevent(PS4 Title for large publisher, Sony, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-- (Ongoing, currently under NDA)
+{{{cvevent(PS4 Title for large publisher, Sony, 2018 -- 2019, Tokyo\, Japan)}}}
+- (Previously under NDA) Performed Q/A tasks and advised with martial arts related translations
 *** Cat Painter「ネコの絵描きさん」                                  :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
 :END:
-{{{cvevent(Cat Painter「ネコの絵描きさん」, Waken, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-- Android, iOS/Waken
+{{{cvevent(Cat Painter「ネコの絵描きさん」, Waken, 2019, Sydney\, Australia)}}}
+- Android, iOS/Name featured in credits
 *** Shadowverse                                                      :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       aeff5286-649f-4f33-8993-c1c8b75a2508
 :END:
-{{{cvevent(Shadowverse, Cygames, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-- eSports coverage materials/Cygames
+{{{cvevent(Shadowverse, Cygames, Sept 2017 -- 2018 , Tokyo\, Japan)}}}
+- eSports coverage materials
 ** Volunteering
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       37d186b1-5335-460f-b5b6-dc327832c8a0
 :END:
-*** EVO Japan
+*** EVO Japan                                                        :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       d7cd48e6-c377-4c09-a27a-957e92939eb2
 :END:
+{{{cvevent(EVO Japan, EVO, 2018, Tokyo\, Japan)}}}
 
+*** Various Japan Film Festivals                                     :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 18:55]
+:ID:       769191f4-66fd-45c8-8fcd-353087e8d66d
+:END:
+{{{cvevent(Various Japan Film Festivals, Japan Foundation, 2013 -- 2017, Australia)}}}
+In Australia
 * CV Column two                                                        :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
@@ -284,25 +300,24 @@ Japanese to English game localisation and linguistic quality assurance over both
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       4e5d2fb3-bfe6-4498-b00b-63bd1d2597d6
 :END:
-*** Honours in Linguistics
+*** Honours in Linguistics                                           :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       4f40368f-762a-4961-8429-80f3319bf545
 :END:
-{{{cvevent(PhD\ in Bayesian Machine Learning for Robotic Control, University of Bristol, Sept 2018 - Ongoing,)}}}
+{{{cvevent(Honours\ in Linguistics, University of New South Wales, Sept 2018 - Ongoing,)}}}
 Ongoing eye-tracking research with human participants, studying the effect of
 various types of flashcard formatting on acquisition of academic terms in a
 second language.
-*** Bachelor of Arts
+{{{par-div}}}
+*** Bachelor of Arts                                                 :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       3c21d51e-91e9-4c97-a082-006593c74a40
 :END:
-{{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, Sept 2018 - Ongoing,)}}}
-Majored in Linguistics and Japanese Studies. This included the study of
-Japanese and Japanese history and culture. The Linguistics studies focused
-on pragmatics, semantics, syntactic and morphemic analysis and phonology.
-Courses were also done in psycholinguistics and second language acquisition.
+{{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, 2013 - 2017)}}}
+Majored in Linguistics and Japanese Studies. This included the study of Japanese and Japanese history and culture. The Linguistics studies focused on pragmatics, semantics, syntactic and morphemic analysis and phonology. Courses were also done in psycholinguistics and second language acquisition.
+
 *** My Life Philosophy                                              :noexport:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
@@ -313,19 +328,27 @@ Courses were also done in psycholinguistics and second language acquisition.
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c706263e-1aa0-4790-8c48-346e18ae49f1
 :END:
+
 ** Technical Skills
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       9eb06397-8706-4782-8e25-64cf64187d5f
 :END:
 - CAT Tools
-- CafeTrans and OmegaT
+{{{cvtag(OmegaT)}}}
+{{{cvtag(CafeTrans)}}}
 - Subtitling
-- Aegisubs
+{{{cvtag(Aegisubs)}}}
 - Software
-- Matlab, Microsoft Excel, Unix/Linux(Arch), Vim, Emacs
+{{{cvtag(Microsoft Excel)}}}
+{{{cvtag(GNU/Linux)}}}
+{{{cvtag(Emacs)}}}
+{{{cvtag(Vim)}}}
 - Programming
-- Python, LATEX, BASH
+{{{cvtag(Python)}}}
+{{{cvtag(LISP)}}}
+{{{cvtag(LaTeX)}}}
+{{{cvtag(BASH)}}}
 
 ** Referees                                                         :noexport:
 :PROPERTIES:
