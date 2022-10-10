@@ -218,7 +218,7 @@ h2                   { font-size: 40px; line-height: 1.1em; }
 h3                   { font-size: 30px; line-height: 1.1em; }
 
 /* links */
-a                    { color: #fabd2f; text-decoration: none; }
+a                    { color: #bd93f9; text-decoration: none; }
 a:hover              { color: #fff; }
 
 /* Horizontal bar */
