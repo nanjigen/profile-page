@@ -348,7 +348,7 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 - Programming
 {{{cvtag(Python)}}}
 {{{cvtag(LISP)}}}
-{{{cvtag(LaTeX)}}}
+{{{cvtag(\LaTeX)}}}
 {{{cvtag(BASH)}}}
 
 ** Referees                                                         :noexport:
