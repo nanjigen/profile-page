@@ -23,6 +23,7 @@ mailto:translation@danielotto.jp
 :ID:       543b96e7-ca83-4048-b960-c2c169adf385
 :END:
 
-  * [[url_for:blog][Blog]]
+  * [[url_for:blog][Blog (Under construction)]]
   * [[https://github.com/nanjigen][GitHub]]
+  * [[https://linkedin.com/in/dmotto][LinkedIn]]
   * [[mailto:translation@danielotto.jp][Email]]
