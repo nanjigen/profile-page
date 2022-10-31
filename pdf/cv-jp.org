@@ -1,4 +1,4 @@
-#+TITLE: JtoE Games Translator
+#+TITLE: 日英ゲーム翻訳者
 #+AUTHOR: Daniel Otto
 
 #+TAGS: noexport(n) ignore(i)
@@ -162,7 +162,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+begin_export latex
 \name{Daniel Otto}
 % \photoR{2.8cm}{aidan_portrait.jpeg}
-\tagline{Games Localiser}
+\tagline{ゲームローカライザー}
 #+end_export
 
 ** Personal info                                                      :ignore:
@@ -175,7 +175,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
   \homepage{www.danielotto.jp}
   \email{translation@danielotto.jp}
   \phone{+81 80 7650 1991}
-  \location{Tokyo, Japan}
+  \location{新宿区、東京}
   \github{nanjigen}
   \linkedin{dmotto}
   \dob{1991/10/18}
@@ -198,56 +198,75 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 \begin{paracol}{2}
 #+end_export
 
-** Experience
+** 経験歴
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       bcd96d90-cef6-40c3-9bdd-0e7ab90bdf92
 :END:
+*** 英会話先生                                                  :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 19:07]
+:ID:       594ec195-13a8-4f7b-b24a-defc3840765b
+:END:
+{{{cvevent(英会話先生, NOVA, 2022/04 -- 継続中, 東京\、日本)}}}
+水際対策の際、入国審査が緩和され、日本への入国ビザが取得できた。言語学と第二言語習得の専門知識を生かし、日本人に英語を教えています。
+{{{par-div}}}
+
 *** Freelance translator                                             :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
 :END:
-{{{cvevent(Freelance translator, self-employed, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
-
+{{{cvevent(フリーランス翻訳者, 個人事業主, 2017/09 -- 継続中, 東京、シドニー)}}}
+日本とオーストラリアを行き来しながら、モバイルとコンソールのゲームローカライゼーションと言語的品質保証を担当。
 {{{par-div}}}
-** Projects
+
+** プロジェクト
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c250d349-dcb9-4186-b3e7-37580e62d910
 :END:
-*** PS4 Title for large publisher                                    :ignore:
-:PROPERTIES:
-:CREATED:  [2022-10-10 Mon 11:21]
-:ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
-:END:
-{{{cvevent(PS4 Title for large publisher, Sony, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-- (Ongoing, currently under NDA)
 *** Cat Painter「ネコの絵描きさん」                                  :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
 :END:
-{{{cvevent(Cat Painter「ネコの絵描きさん」, Waken, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
+{{{cvevent(Cat Painter「ネコの絵描きさん」, (Waken) Impetus, 2019, シドニー\、オーストラリア)}}}
 - Android, iOS/Waken
+*** PS4 Title for large publisher                                    :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e7a5f04b-e691-4266-94bf-11bf215d1d3c
+:END:
+{{{cvevent(西遊記, (Sony) Impetus, 2018 - 2019, 東京\、日本)}}}
+- (以前はNDA) Q/Aタスク、アイテム翻訳、武道関連用語のアドバイスなどを実施。
 *** Shadowverse                                                      :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       aeff5286-649f-4f33-8993-c1c8b75a2508
 :END:
-{{{cvevent(Shadowverse, Cygames, Sept 2017 -- Ongoing, Tokyo\, Japan)}}}
-- eSports coverage materials/Cygames
-** Volunteering
+{{{cvevent(Shadowverse, (Cygames) Impetus, 2017/11 - 2017/12, 東京\、日本)}}}
+- eスポーツ取材資料
+
+** ボランティア
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       37d186b1-5335-460f-b5b6-dc327832c8a0
 :END:
-*** EVO Japan
+*** EVO Japan                                                        :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       d7cd48e6-c377-4c09-a27a-957e92939eb2
 :END:
+{{{cvevent(EVO Japan, EVO, 2018, 東京\、日本)}}}
+
+*** Various Japan Film Festivals                                     :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 18:55]
+:ID:       769191f4-66fd-45c8-8fcd-353087e8d66d
+:END:
+{{{cvevent(JFF（日本映画祭）, Japan Foundation, 2013 -- 2017, オーストラリア シドニー、パース)}}}
+シドニー、パース
 
 * CV Column two                                                        :ignore:
 :PROPERTIES:
@@ -258,7 +277,7 @@ Japanese to English game localisation and linguistic quality assurance over both
 \switchcolumn
 #+end_export
 
-** Languages
+** 言語
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       3c16182a-6709-4342-b3b9-eee0d26eadc4
@@ -266,10 +285,10 @@ Japanese to English game localisation and linguistic quality assurance over both
 #+begin_export latex
 % \cvsection{Languages}
 
-\cvskill{English - Native}{5}
+\cvskill{英語 - 母語}{5}
 % \divider
 
-\cvskill{Japanese - N2}{4}
+\cvskill{日本語 - N2}{4}
 % \divider
 
 % \cvskill{German}{3}
@@ -279,30 +298,27 @@ Japanese to English game localisation and linguistic quality assurance over both
 % %% \bigskip, \vpsace etc to make ajustments.
 % \medskip
 #+end_export
-** Education
+** 学歴
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       4e5d2fb3-bfe6-4498-b00b-63bd1d2597d6
 :END:
-*** Honours in Linguistics
+*** Honours in Linguistics                                           :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       4f40368f-762a-4961-8429-80f3319bf545
 :END:
-{{{cvevent(PhD\ in Bayesian Machine Learning for Robotic Control, University of Bristol, Sept 2018 - Ongoing,)}}}
-Ongoing eye-tracking research with human participants, studying the effect of
-various types of flashcard formatting on acquisition of academic terms in a
-second language.
-*** Bachelor of Arts
+{{{cvevent(言語学専攻の優等生, ニューサウスウェールズ大学, Sept 2018 - 継続中)}}}
+フラッシュカードの様々なフォーマットが第二言語の学術用語の習得に及ぼす影響について、ヒト被験者を対象としたアイトラッキング研究を継続中。
+{{{par-div}}}
+*** Bachelor of Arts                                                 :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       3c21d51e-91e9-4c97-a082-006593c74a40
 :END:
-{{{cvevent(BA\ in Linguistics and Japanese Studies, University of New South Wales, Sept 2018 - Ongoing,)}}}
-Majored in Linguistics and Japanese Studies. This included the study of
-Japanese and Japanese history and culture. The Linguistics studies focused
-on pragmatics, semantics, syntactic and morphemic analysis and phonology.
-Courses were also done in psycholinguistics and second language acquisition.
+{{{cvevent(言語学および日本研究専攻の学士号, ニューサウスウェールズ大学, 2013 - 2017)}}}
+その中には、日本や日本の歴史や文化を学ぶことも含まれていました。言語学では、語用論、意味論、構文・形態素解析、音韻論に焦点を当てました。また、心理言語学や第二言語習得のコースも行われました。
+
 *** My Life Philosophy                                              :noexport:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
@@ -313,19 +329,27 @@ Courses were also done in psycholinguistics and second language acquisition.
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c706263e-1aa0-4790-8c48-346e18ae49f1
 :END:
-** Technical Skills
+
+** 技術力
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       9eb06397-8706-4782-8e25-64cf64187d5f
 :END:
-- CAT Tools
-- CafeTrans and OmegaT
-- Subtitling
-- Aegisubs
-- Software
-- Matlab, Microsoft Excel, Unix/Linux(Arch), Vim, Emacs
-- Programming
-- Python, LATEX, BASH
+- CAT ツール
+{{{cvtag(OmegaT)}}}
+{{{cvtag(CafeTrans)}}}
+- 字幕
+{{{cvtag(Aegisub)}}}
+- ソフトウェア
+{{{cvtag(Microsoft Excel)}}}
+{{{cvtag(GNU/Linux)}}}
+{{{cvtag(Emacs)}}}
+{{{cvtag(Vim)}}}
+- プログラミング
+{{{cvtag(Python)}}}
+{{{cvtag(LISP)}}}
+{{{cvtag(\LaTeX)}}}
+{{{cvtag(BASH)}}}
 
 ** Referees                                                         :noexport:
 :PROPERTIES:
