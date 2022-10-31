@@ -13,6 +13,12 @@ ns2.digitalocean.com
 ns3.digitalocean.com
 #+end_src
 
+** MX records
+
+danielotto.jp.  IN MX 10 mxext1.mailbox.org.
+danielotto.jp.  IN MX 10 mxext2.mailbox.org.
+danielotto.jp.  IN MX 20 mxext3.mailbox.org.
+
 ** nginx
 :PROPERTIES:
 :CREATED:  [2022-09-22 Thu 17:16]
