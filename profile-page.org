@@ -522,7 +522,7 @@ The blocks available in this file are:
 :END:
 
 The below is required to get the right dependencies
-#+begin_src elisp :tangle publish.el
+#+begin_src elisp :tangle publish.el :results silent
 ;; Guarantee the freshest version of the weblorg
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
@@ -547,10 +547,7 @@ The below is required to get the right dependencies
   (setq org-html-htmlize-output-type 'css))
 #+end_src
 
-#+RESULTS:
-: t
-
-#+begin_src elisp :tangle publish.el
+#+begin_src elisp :tangle publish.el :results silent
 (weblorg-site
  :template-vars '(("site_name" . "Daniel Otto's profile site")
                   ("site_author" "Daniel Otto")
@@ -599,6 +596,7 @@ The below is required to get the right dependencies
 ;; fire the engine and export all the files declared in the routes above
 (weblorg-export)
 #+end_src
+
 * NEXT Fix encryption on profile site                               :@computer:
 :PROPERTIES:
 :TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
