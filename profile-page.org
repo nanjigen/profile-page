@@ -175,6 +175,7 @@ sudo ln -s /etc/nginx/sites-available/baikal /etc/nginx/sites-enabled
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
 :ID:       bd762a86-cf35-4873-ace8-1c6ddb80c862
+:header-args: :eval no
 :END:
 https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
 
