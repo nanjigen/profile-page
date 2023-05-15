@@ -16,7 +16,7 @@ I have a keen interest in Computer Science and data analysis and spend my free t
 If you have any inquires or would like to work with me, contact me at:
 mailto:techlisper@danielotto.jp
 
-[[file:../pdf/tech-cv-en.pdf][My C.V.]]
+[[file:../pdf/cv-tech-en.pdf][My C.V.]]
 ------
 
 * Links
