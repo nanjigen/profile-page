@@ -1,0 +1,28 @@
+#+TITLE: How to find Japanese books
+
+* NEXT [#8] Brainstorm finding Japanese books blog post           :incremental:
+SCHEDULED: <2023-02-21 Tue>
+:PROPERTIES:
+:ID:       2d7b23ce-59bc-493c-ae5d-18f88264a3e1
+:CREATED:  <2022-10-21 Fri 11:17>
+:LAST_REVIEWED: [2023-02-13 Mon 18:08]
+:TOTAL_REPEATS: 3
+:OLD_INTERVAL: 4
+:NEW_INTERVAL: 8
+:A_FACTOR: 2.0
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
+:END:
+
+The idea of this blog post is to both assist Japanese learners visiting Japan in finding their second-hand book of choice in a book-off, as well as demonstrate my own knowledge of Japan and its literate in my blog for others to see.
+
+- Find some resources on Japanese dewey decimal system
+  https://en.wikipedia.org/wiki/Nippon_Decimal_Classification
+  https://www.jla.or.jp/default.aspx
+- Have a focus on second-hand book stores (book off etc)
+- Maybe include an academic section?
+- Have a manga section!
+- Video?
+- Have a section about getting a library card and taking a book out.
+  https://www.library.metro.tokyo.lg.jp/english/how_to_use/
+
+The main method of classification in Japan is the Nippon Decimal Classification system (日本十進分類法)

@@ -7,13 +7,19 @@
 
 Point nameservers to Digital Ocean's:
 
-#+begin_src sh
+#+begin_src sh :eval no
 ns1.digitalocean.com
 ns2.digitalocean.com
 ns3.digitalocean.com
 #+end_src
 
+#+RESULTS:
+
 ** MX records
+:PROPERTIES:
+:CREATED:  [2023-01-06 Fri 15:03]
+:ID:       9bb17b3f-9aec-475b-9847-12d73c5aceb3
+:END:
 
 danielotto.jp.  IN MX 10 mxext1.mailbox.org.
 danielotto.jp.  IN MX 10 mxext2.mailbox.org.
@@ -23,9 +29,10 @@ danielotto.jp.  IN MX 20 mxext3.mailbox.org.
 :PROPERTIES:
 :CREATED:  [2022-09-22 Thu 17:16]
 :ID:       79d93393-eb3d-45f1-9741-16e64d54b6af
-:header-args: :dir ssh:nanjigen@profile-droplet:/
+:header-args: :dir ssh:nanjigen@profile-droplet:/ :eval no
 :END:
 
+Homepage
 #+begin_src sh :tangle /ssh:profile-droplet|sudo:profile-droplet:/etc/nginx/sites-available/default
 ##
 # You should look at the following URL's in order to grasp a solid understanding
@@ -48,18 +55,18 @@ danielotto.jp.  IN MX 20 mxext3.mailbox.org.
 # Default server configuration
 #
 server {
-	listen 80 default_server;
+	listen 80;
+	# listen 80 default_server;
 	# listen 893 default_server;
-	listen [::]:80 default_server;
+	# listen [::]:80 default_server;
 
 	# SSL configuration
 	#
-	# listen 443 ssl default_server;
-	# listen [::]:443 ssl default_server;
-	#
-	# Note: You should disable gzip for SSL traffic.
-	# See: https://bugs.debian.org/773332
-	#
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+    ssl_certificate /etc/letsencrypt/live/www.danielotto.jp/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.danielotto.jp/privkey.pem;
+
 	# Read up on ssl_ciphers to ensure a secure configuration.
 	# See: https://bugs.debian.org/765782
 	#
@@ -127,6 +134,43 @@ server {
 
 #+end_src
 
+baikal
+#+begin_src sh :tangle /ssh:profile-droplet|sudo:profile-droplet:/etc/nginx/sites-available/baikal
+server {
+	listen 443 ssl;
+	server_name baikal.danielotto.jp;
+
+    ssl_certificate /etc/letsencrypt/live/baikal.danielotto.jp/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/baikal.danielotto.jp/privkey.pem;
+
+  root  /var/www/baikal.danielotto.jp/html;
+  index index.php;
+
+  rewrite ^/.well-known/caldav /dav.php redirect;
+  rewrite ^/.well-known/carddav /dav.php redirect;
+
+  charset utf-8;
+
+  location ~ /(\.ht|Core|Specific|config) {
+    deny all;
+    return 404;
+  }
+
+  location ~ ^(.+\.php)(.*)$ {
+    try_files $fastcgi_script_name =404;
+    include        /etc/nginx/fastcgi_params;
+    fastcgi_split_path_info  ^(.+\.php)(.*)$;
+    fastcgi_pass   unix:/var/run/php/php-fpm.sock;
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    fastcgi_param  PATH_INFO        $fastcgi_path_info;
+  }
+}
+#+end_src
+
+And remember to:
+#+begin_src sh
+sudo ln -s /etc/nginx/sites-available/baikal /etc/nginx/sites-enabled
+#+end_src
 ** git deployment
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
@@ -140,10 +184,13 @@ post-receive hook
 git --work-tree=/srv/www/danielotto.jp --git-dir=/var/repo/site.git checkout -f
 #+end_src
 
+#+RESULTS:
+
 * Theme
 :PROPERTIES:
 :CREATED:  [2022-09-22 Thu 16:57]
 :ID:       3c505129-0b7a-44a5-91a9-e48bb46413fc
+:header-args: :eval no
 :END:
 ** main
 :PROPERTIES:
@@ -500,11 +547,14 @@ The below is required to get the right dependencies
   (setq org-html-htmlize-output-type 'css))
 #+end_src
 
+#+RESULTS:
+: t
+
 #+begin_src elisp :tangle publish.el
 (weblorg-site
  :template-vars '(("site_name" . "Daniel Otto's profile site")
                   ("site_author" "Daniel Otto")
-                  ("site_email" . "translation@danielotto.jp")
+                  ("site_email" . "techlisper@danielotto.jp")
                   ("site_description" . "My personal profile and blog about Linguistics, computing and translation.")))
 
 (setq weblorg-default-url "http://www.danielotto.jp")
@@ -549,3 +599,9 @@ The below is required to get the right dependencies
 ;; fire the engine and export all the files declared in the routes above
 (weblorg-export)
 #+end_src
+* NEXT Fix encryption on profile site                               :@computer:
+:PROPERTIES:
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
+:CREATED:  [2023-01-06 Fri 15:03]
+:ID:       4e88e18a-fcf1-44d5-827b-5b8966056c54
+:END:

@@ -1,0 +1,13 @@
+#+TITLE: Using Excel-vim for translating in Excel
+
+* NEXT Brainstorm Excel shortcuts+vim keys blog post :incremental:@computer:#translation:
+:PROPERTIES:
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
+:ID:       9d671d55-6a29-4584-82a1-130fcedde973
+:CREATED:  <2022-10-21 Fri 11:06>
+:LAST_REVIEWED: 0
+:TOTAL_REPEATS: 0
+:OLD_INTERVAL: 0
+:NEW_INTERVAL: 1
+:A_FACTOR: 2.0
+:END:

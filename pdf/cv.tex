@@ -1,0 +1,200 @@
+% Created 2023-05-15 Mon 09:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% Use roboto and lato for fonts
+\renewcommand{\familydefault}{\sfdefault}
+
+% Change the colours if you want to
+\RequirePackage{xcolor}
+\definecolor{dracula-background}{HTML}{141d28}
+\definecolor{dracula-background-secondary-alt}{HTML}{44475a}
+\definecolor{dracula-background-secondary}{HTML}{1e1f29}
+\definecolor{dracula-foreground}{HTML}{f8f8f2}
+\definecolor{dracula-sidebar-background}{HTML}{233346}
+\definecolor{dracula-green}{HTML}{50fa7b}
+\definecolor{dracula-dark-green}{HTML}{b8bb26}
+\definecolor{dracula-violet}{HTML}{bd93f9}
+\definecolor{dracula-magenta}{HTML}{ff79c6}
+\definecolor{dracula-orange}{HTML}{ffb86c}
+\definecolor{dracula-cyan}{HTML}{8be9fd}
+\definecolor{dracula-red}{HTML}{ff5555}
+\definecolor{dracula-yellow}{HTML}{f1fa8c}
+\definecolor{dracula-body-text}{HTML}{C3C3C3}
+\definecolor{dracula-comment}{HTML}{6272a4}
+\definecolor{dracula-page-links}{HTML}{C26EFF}
+\definecolor{dracula-attributes-color}{HTML}{FFFF80}
+\definecolor{dracula-external-links}{HTML}{7CE973}
+\definecolor{dracula-links-hover}{HTML}{92FFFF}
+\definecolor{dracula-hashtags}{HTML}{FFD17E}
+\definecolor{dracula-italics-color}{HTML}{FF7EA2}
+\definecolor{dracula-bold-color}{HTML}{FF4E4E}
+\definecolor{dracula-highlight-text-color}{HTML}{47405E}
+\definecolor{dracula-highlighter}{HTML}{FFFF80}
+\definecolor{dracula-sidebar-text}{HTML}{F2F2F2}
+\definecolor{dracula-page-heading}{HTML}{FFBE49}
+\definecolor{dracula-daily-heading}{HTML}{FFCA6A}
+\definecolor{dracula-headings}{HTML}{F2F2F2}
+\definecolor{dracula-bullets}{HTML}{7A6DAA}
+\definecolor{dracula-closed-bullets}{HTML}{3E445D}
+\definecolor{dracula-references}{HTML}{9E8DDB}
+\definecolor{dracula-block-reference-text}{HTML}{FF9580}
+\definecolor{dracula-namespaces}{HTML}{5EB9FF}
+\definecolor{dracula-all-pages-mentions}{HTML}{FF9580}
+\definecolor{dracula-cursor}{HTML}{F2F2F2}
+\definecolor{dracula-icons}{HTML}{FBCC77}
+\definecolor{dracula-icons-hover}{HTML}{81FFEA}
+\definecolor{dracula-filter-icon}{HTML}{C26EFF}
+\pagecolor{white}
+\colorlet{name}{dracula-violet}
+\colorlet{tagline}{dracula-comment}
+\colorlet{heading}{dracula-namespaces}
+\colorlet{headingrule}{dracula-bullets}
+\colorlet{subheading}{dracula-orange}
+\colorlet{accent}{dracula-page-links}
+\colorlet{emphasis}{dracula-comment}
+\colorlet{body}{dracula-background}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+\usepackage{paracol}
+\columnratio{0.6} % Set the left/right column width ratio to 6:4.
+\usepackage{luatexja}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Daniel Otto Daniel Otto}
+\date{\today}
+\title{Clojure Developer}
+\begin{document}
+
+
+\name{Daniel Otto}
+% \photoR{2.8cm}{aidan_portrait.jpeg}
+\tagline{Data Analyst}
+
+\personalinfo{
+  \homepage{www.danielotto.jp}
+  \email{translation@danielotto.jp}
+  \phone{+81 80 7650 1991}
+  \location{Tokyo, Japan}
+  \github{nanjigen}
+  \linkedin{dmotto}
+  \dob{1991/10/18}
+}
+\makecvheader
+
+\begin{paracol}{2}
+
+\cvsection*{Experience}
+\label{sec:org67501cc}
+\cvevent{English Teacher}{ KDI}{ March 2023 -- Ongoing}{ Tokyo, Japan}
+Moved into a teaching position at a well known bilingual Yochien, where I continue providing linguistics expertese in teaching strategies aimed at children. I also comminucated in a bilingual mediation between English and Japanese staff, often providing intepretation for monolingual coworkers.
+\par\divider
+\cvevent{English Teacher}{ NOVA}{ April 2022 -- March 2023}{ Tokyo, Japan}
+Secured a Humanities visa entering Japan at the cusp of the easing of border control measures. Plied my understanding of linguistics and specialisation in second language acquisition teaching English to Japanese nationals.
+\par\divider
+\cvevent{Freelance translator}{ self-employed}{ Sept 2017 -- Ongoing}{ Tokyo, Sydney}
+Variously residing between Japan and Australia working on Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+
+\cvsection*{Projects}
+\label{sec:org3c70af5}
+\cvevent{PS4 Title for large publisher}{ Sony}{ 2018 -- 2019}{ Tokyo, Japan}
+\begin{itemize}
+\item (Previously under NDA) Performed Linguistic Q/A tasks and advised with martial arts related terminology, utilizing Python to anaylise game lines via frameworks such as Pandas and NLTK.
+\end{itemize}
+\cvevent{Cat Painter「ネコの絵描きさん」}{ Waken}{ 2019}{ Sydney, Australia}
+\begin{itemize}
+\item Android, iOS/Name featured in credits
+\end{itemize}
+\cvevent{Shadowverse}{ Cygames}{ Sept 2017 -- 2018 }{ Tokyo, Japan}
+\begin{itemize}
+\item eSports coverage materials
+\end{itemize}
+\cvsection*{Volunteering}
+\label{sec:orgdfaa340}
+\cvevent{EVO Japan}{ EVO}{ 2018}{ Tokyo, Japan}
+\cvevent{Various Japan Film Festivals}{ Japan Foundation}{ 2013 -- 2017}{ Australia}
+In Australia
+\switchcolumn
+
+\cvsection*{Languages}
+\label{sec:orgcd31f23}
+% \cvsection{Languages}
+
+\cvskill{English - Native}{5}
+% \divider
+
+\cvskill{Japanese - N2 (2022)}{4}
+% \divider
+
+% \cvskill{German}{3}
+
+% %% Yeah I didn't spend too much time making all the
+% %% spacing consistent... sorry. Use \smallskip, \medskip,
+% %% \bigskip, \vpsace etc to make ajustments.
+% \medskip
+\cvsection*{Education}
+\label{sec:orgda115c9}
+\cvevent{Honours\ in Linguistics}{ University of New South Wales}{ Sept 2018 - 2020}{}
+Performed eye-tracking research with human participants, studying the effect of
+various types of flashcard formatting on the acquisition of academic terms in a
+second language. I made use of Python to motivate data use, analyse results of captured data.
+\par\divider
+\cvevent{BA\ in Linguistics and Japanese Studies}{ University of New South Wales}{ 2013 - 2017}{}
+Majored in Linguistics and Japanese Studies. This included the study of Japanese and Japanese history and culture. The Linguistics studies focused on pragmatics, semantics, syntactic and morphemic analysis and phonology. Courses were also done in psycholinguistics and second language acquisition.
+
+\cvsection*{Technical Skills}
+\label{sec:org162143c}
+\begin{itemize}
+\item CAT Tools
+\end{itemize}
+\cvtag{OmegaT}
+\begin{itemize}
+\item Software
+\end{itemize}
+\cvtag{GNU/Linux}
+\cvtag{Guix}
+\cvtag{Emacs}
+\cvtag{Vim}
+\begin{itemize}
+\item Programming
+\end{itemize}
+\cvtag{Clojure}
+\cvtag{LISPs}
+\cvtag{Python}
+\cvtag{\LaTeX}
+\cvtag{BASH}
+
+\end{paracol}
+
+\cvsection*{Export}
+\label{sec:org2a29949}
+\begin{verbatim}
+(org-export-to-file "cv-tech-en.tex")
+;; (org-export-to-file 'altacv "altacv.tex")
+;; (org-latex-compile "altacv.tex")
+\end{verbatim}
+\end{document}

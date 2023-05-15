@@ -1,0 +1,6 @@
+** IN-PROGRESS Write LaTeX file for business cards      :@computer:incremental:
+:PROPERTIES:
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
+:CREATED:  [2023-02-14 Tue 12:51]
+:ID:       ba8d29be-e5fa-47df-a4ee-dac8429eab12
+:END:

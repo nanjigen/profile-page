@@ -1,7 +1,8 @@
 #+TITLE: JtoE Games Translator
 #+AUTHOR: Daniel Otto
+#+FILETAGS: incremental
 
-#+TAGS: noexport(n) ignore(i)
+#+TAGS: noexport(n) ignore(I)
 
 * Config                                                   :noexport:ignore:
 :PROPERTIES:
@@ -22,7 +23,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :ID:       07be475d-683d-476f-b751-d359be557d93
 :END:
 
-#+begin_src scheme
+#+begin_src scheme :tangle manifest.scm
 "font-google-roboto"
 "font-lato"
 "font-awesome"
@@ -335,6 +336,13 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       9eb06397-8706-4782-8e25-64cf64187d5f
 :END:
+* NEXT Add GTD to resume
+:PROPERTIES:
+:CREATED:  [2023-04-17 Mon 10:14]
+:ID:       15de9ee3-9919-4522-b55a-e9f3e7f4df05
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
+:END:
+
 - CAT Tools
 {{{cvtag(OmegaT)}}}
 {{{cvtag(CafeTrans)}}}
@@ -348,23 +356,20 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 - Programming
 {{{cvtag(Python)}}}
 {{{cvtag(LISP)}}}
+{{{cvtag(Clojure)}}}
 {{{cvtag(\LaTeX)}}}
 {{{cvtag(BASH)}}}
+
+#+begin_export latex
+\end{paracol}
+#+end_export
 
 ** Referees                                                         :noexport:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       8223ddb9-633b-4585-9dcf-43417cff1618
 :END:
-** Backmatter                                                         :ignore:
-:PROPERTIES:
-:CREATED:  [2022-10-10 Mon 11:21]
-:ID:       2cb04e74-b2f6-45aa-af9d-2e12d1df3af1
-:END:
 
-#+begin_export latex
-\end{paracol}
-#+end_export
 
 ** No export                                                        :noexport:
 :PROPERTIES:
