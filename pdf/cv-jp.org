@@ -24,9 +24,11 @@ https://github.com/aidanscannell/my-org-resume
 :END:
 
 #+begin_src scheme :tangle manifest.scm
-"font-google-roboto"
-"font-lato"
-"font-awesome"
+(specifications->manifest
+ (list
+  "font-google-roboto"
+  "font-lato"
+  "font-awesome"))
 #+end_src
 
 ** TODO Move LaTeX Config to standard export

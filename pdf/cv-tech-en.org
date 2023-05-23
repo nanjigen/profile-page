@@ -18,9 +18,13 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :END:
 
 #+begin_src scheme :tangle manifest.scm :eval no
-"font-google-roboto"
-"font-lato"
-"font-awesome"
+(specifications->manifest
+ (list
+  "texlive"
+  "texlive-base"
+  "font-google-roboto"
+  "font-lato"
+  "font-awesome"))
 #+end_src
 
 ** TODO Move LaTeX Config to standard export
@@ -171,7 +175,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+begin_export latex
 \personalinfo{
   \homepage{www.danielotto.jp}
-  \email{techlisper@danielotto.jp}
+  \email{analytics@danielotto.jp}
   \phone{+81 80 7650 1991}
   \location{Tokyo, Japan}
   \github{nanjigen}
@@ -341,13 +345,9 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       9eb06397-8706-4782-8e25-64cf64187d5f
 :END:
-- CAT Tools
-{{{cvtag(OmegaT)}}}
 - Software
 {{{cvtag(\faLinux GNU/Linux)}}}
 {{{cvtag(Guix)}}}
-{{{cvtag(\faEmacs)}}}
-{{{cvtag(\mfEmacs)}}}
 {{{cvtag(Emacs)}}}
 {{{cvtag(Vim)}}}
 - Programming
@@ -357,6 +357,8 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 {{{cvtag(\mfClojure Clojure)}}}
 {{{cvtag(\LaTeX)}}}
 {{{cvtag(\mfshell BASH)}}}
+- CAT Tools
+{{{cvtag(OmegaT)}}}
 
 #+begin_export latex
 \end{paracol}
@@ -368,7 +370,7 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 :ID:       8223ddb9-633b-4585-9dcf-43417cff1618
 :END:
 
-* Export
+* Export                                                             :noexport:
 :PROPERTIES:
 :CREATED:  [2023-05-15 Mon 09:13]
 :ID:       fcd6ef33-a104-4789-8ab1-a403a3bf1034
