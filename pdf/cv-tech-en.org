@@ -295,7 +295,7 @@ In Australia
 \cvskill{English - Native}{5}
 % \divider
 
-\cvskill{Japanese - N2 (2022)}{4}
+\cvskill{Japanese - JLPT N2}{4}
 % \divider
 
 % \cvskill{German}{3}
