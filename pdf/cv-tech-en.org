@@ -236,7 +236,7 @@ Variously residing between Japan and Australia working on Japanese to English ga
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       ce053e16-3199-4c78-97c2-39bef6ba5ce0
 :END:
-{{{cvevent(Lead Audio-Visual Technician, Showtime Productions, Nov 2016 -- Sydney, Australia)}}}
+{{{cvevent(Lead Audio-Visual Technician, Showtime Productions, Nov 2016 -- Feb 2022, Sydney, Australia)}}}
 Lead technician operating across several convention centers - planning, setup, and execution of audio-visual requirements for conferences, trade shows, and special events; accommodating up to 1,500 attendees. Collaborated closely with event organizers, presenters, and clients to understand their audio-visual needs and provide tailored solutions, often giving stage direction and stage presence coaching.
 
 ** Projects
