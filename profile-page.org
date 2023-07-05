@@ -171,6 +171,49 @@ And remember to:
 #+begin_src sh
 sudo ln -s /etc/nginx/sites-available/baikal /etc/nginx/sites-enabled
 #+end_src
+** terraform
+:PROPERTIES:
+:CREATED:  [2023-07-05 Wed 20:20]
+:ID:       78254fce-8dd7-43f9-86a2-e202123486d8
+:END:
+https://cloud.google.com/storage/docs/hosting-static-website?_gl=1*syu26l*_ga*MTMwNzgxMzE4MC4xNjgzNDU4Mzcw*_ga_WH2QY8WWF5*MTY4ODU1MDY4MS4xLjEuMTY4ODU1MDY4NC4wLjAuMA..&_ga=2.92324061.-1307813180.1683458370#storage-create-bucket-terraform
+
+Setup the bucket:
+#+begin_src terraform :tangle storage-bucket.tf
+# Create new storage bucket in the Asia
+# and settings for main_page_suffix and not_found_page
+resource "random_id" "bucket_prefix" {
+  byte_length = 8
+}
+
+resource "google_storage_bucket" "static_website" {
+  name          = "${random_id.bucket_prefix.hex}-static-website-bucket"
+  location      = "ASIA-NORTHEAST1"
+  storage_class = "STANDARD"
+  website {
+    main_page_suffix = "index.html"
+    not_found_page   = "404.html"
+  }
+}
+#+end_src
+
+#+begin_src terraform bucket-files.tf
+# Upload a simple index.html page to the bucket
+resource "google_storage_bucket_object" "indexpage" {
+  name         = "index.html"
+  content      = "<html><body>Hello World!</body></html>"
+  content_type = "text/html"
+  bucket       = google_storage_bucket.static_website.id
+}
+
+# Upload a simple 404 / error page to the bucket
+resource "google_storage_bucket_object" "errorpage" {
+  name         = "404.html"
+  content      = "<html><body>404!</body></html>"
+  content_type = "text/html"
+  bucket       = google_storage_bucket.static_website.id
+}
+#+end_src
 ** git deployment
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
