@@ -79,7 +79,10 @@ resource "google_storage_bucket_object" "errorpage" {
 :ID:       bd762a86-cf35-4873-ace8-1c6ddb80c862
 :header-args: :eval no
 :END:
-https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
+https://medium.com/interleap/automating-terraform-deployment-to-google-cloud-with-github-actions-17516c4fb2e5
+
+Github Action
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
 
 post-receive hook
 #+begin_src sh :tangle /ssh:nanjigen@profile-droplet:/var/repo/site.git/hooks/post-receive :tangle-mode (identity #o755)
