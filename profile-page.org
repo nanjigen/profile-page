@@ -31,10 +31,16 @@ danielotto.jp.  IN MX 20 mxext3.mailbox.org.
 :ID:       78254fce-8dd7-43f9-86a2-e202123486d8
 :END:
 https://cloud.google.com/storage/docs/hosting-static-website?_gl=1*syu26l*_ga*MTMwNzgxMzE4MC4xNjgzNDU4Mzcw*_ga_WH2QY8WWF5*MTY4ODU1MDY4MS4xLjEuMTY4ODU1MDY4NC4wLjAuMA..&_ga=2.92324061.-1307813180.1683458370#storage-create-bucket-terraform
+https://registry.terraform.io/modules/gruntwork-io/static-assets/google/latest/submodules/cloud-storage-static-website
+
+Here we write out a =terraform= configuration declaring IAC to deploy a static website with a custom domain on Google cloud storage. This makes use of the =cloud-storage-static-website= module.
+
+The storage bucket is created in the asia-northeast1 region, allowing the site to be situated in Tokyo based servers.
 
 Setup the bucket:
-#+begin_src terraform :tangle storage-bucket.tf
-# Create new storage bucket in the Asia
++#name: terraform-main
+#+begin_src terraform :tangle tf/main.tf
+# Create new storage bucket in the asia-northeast1 region
 # and settings for main_page_suffix and not_found_page
 resource "random_id" "bucket_prefix" {
   byte_length = 8
@@ -49,9 +55,7 @@ resource "google_storage_bucket" "static_website" {
     not_found_page   = "404.html"
   }
 }
-#+end_src
 
-#+begin_src terraform bucket-files.tf
 # Upload a simple index.html page to the bucket
 resource "google_storage_bucket_object" "indexpage" {
   name         = "index.html"
@@ -68,6 +72,7 @@ resource "google_storage_bucket_object" "errorpage" {
   bucket       = google_storage_bucket.static_website.id
 }
 #+end_src
+
 ** git deployment
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
