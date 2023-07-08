@@ -77,20 +77,15 @@ resource "google_storage_bucket_object" "errorpage" {
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
 :ID:       bd762a86-cf35-4873-ace8-1c6ddb80c862
-:header-args: :eval no
+:header-args: :tangle no :eval no
 :END:
 https://medium.com/interleap/automating-terraform-deployment-to-google-cloud-with-github-actions-17516c4fb2e5
 
 Github Action
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
 
-post-receive hook
-#+begin_src sh :tangle /ssh:nanjigen@profile-droplet:/var/repo/site.git/hooks/post-receive :tangle-mode (identity #o755)
-#!/bin/sh
-git --work-tree=/srv/www/danielotto.jp --git-dir=/var/repo/site.git checkout -f
 #+end_src
 
-#+RESULTS:
 
 * Theme
 :PROPERTIES:
