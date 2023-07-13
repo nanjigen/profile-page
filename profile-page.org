@@ -5,16 +5,6 @@
 :ID:       e5f2285b-68f5-43a0-bc00-5a20fc657a73
 :END:
 
-Point nameservers to Digital Ocean's:
-
-#+begin_src sh :eval no
-ns1.digitalocean.com
-ns2.digitalocean.com
-ns3.digitalocean.com
-#+end_src
-
-#+RESULTS:
-
 ** MX records
 :PROPERTIES:
 :CREATED:  [2023-01-06 Fri 15:03]
@@ -32,7 +22,7 @@ danielotto.jp.  IN MX 20 mxext3.mailbox.org.
 :END:
 https://cloud.google.com/storage/docs/hosting-static-website?_gl=1*syu26l*_ga*MTMwNzgxMzE4MC4xNjgzNDU4Mzcw*_ga_WH2QY8WWF5*MTY4ODU1MDY4MS4xLjEuMTY4ODU1MDY4NC4wLjAuMA..&_ga=2.92324061.-1307813180.1683458370#storage-create-bucket-terraform
 https://registry.terraform.io/modules/gruntwork-io/static-assets/google/latest/submodules/cloud-storage-static-website
-
+https://cloud.google.com/storage/docs/static-website#specialty_pages
 Here we write out a =terraform= configuration declaring IAC to deploy a static website with a custom domain on Google cloud storage. This makes use of the =cloud-storage-static-website= module.
 
 The storage bucket is created in the asia-northeast1 region, allowing the site to be situated in Tokyo based servers.
