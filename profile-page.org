@@ -107,7 +107,7 @@ Then we can set a ~terraform~ variable that points to our output folder defined 
 variable "output_folder" {
   description = "Bucket's html directory"
   type        = string
-  default     = "${path.module}/../output"
+  default     = "../output"
 }
 #+end_src
 
