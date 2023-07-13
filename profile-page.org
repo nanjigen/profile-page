@@ -55,8 +55,17 @@ provider "google-beta" {
 }
 #+end_src
 
+*** Storage Bucket
+:PROPERTIES:
+:CREATED:  [2023-07-09 Sun 17:33]
+:ID:       f0d0b8fe-e9f1-443e-b1d3-1ae23d27de38
+:END:
+
+In this example, =main_page_suffix= is set to "index.html", which means that if a user navigates to http://<<bucket_name()>>.storage.googleapis.com/, they will see the contents of http://<<bucket_name()>>.storage.googleapis.com/index.html.
+
+The =not_found_page= is set to "404.html", which means that if a user requests a page that doesn't exist, they will see the contents of http://my-static-assets.storage.googleapis.com/404.html.
+
 Setup the bucket:
-+#name: terraform-main
 #+begin_src terraform :tangle tf/main.tf
 # Create new storage bucket in the asia-northeast1 region
 # and settings for main_page_suffix and not_found_page
@@ -74,13 +83,23 @@ resource "google_storage_bucket" "static_website" {
   }
 }
 
-# Upload a simple index.html page to the bucket
-resource "google_storage_bucket_object" "indexpage" {
-  name         = "index.html"
-  content      = "<html><body>Hello World!</body></html>"
-  content_type = "text/html"
-  bucket       = google_storage_bucket.static_website.id
+#+end_src
+
+The random_id generation is important for x, but it prevents us from knowing the bucket name ahead of apply, so we define an output that can be accessed after subsequent applys:
+
+#+begin_src terraform :tangle tf/main.tf
+output "bucket_name" {
+  value = google_storage_bucket.static_website.name
+  description = "The name of the bucket"
 }
+
+#+end_src
+
+Accessible via the =terraform= command:
+#+name: bucket-name
+#+begin_src sh :dir tf :noweb yes :cache yes :results silent
+terraform output bucket_name
+#+end_src
 
 # Upload a simple 404 / error page to the bucket
 resource "google_storage_bucket_object" "errorpage" {
