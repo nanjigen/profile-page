@@ -101,6 +101,24 @@ Accessible via the =terraform= command:
 terraform output bucket_name
 #+end_src
 
+Then we can set a ~terraform~ variable that points to our output folder defined later in the ~weblorg~ configuration:
+
+#+begin_src terraform :noweb-ref tf-variables
+variable "output_folder" {
+  description = "Bucket's html directory"
+  type        = string
+  default     = "${path.module}/../output"
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+# Upload a simple index.html page to the bucket
+resource "google_storage_bucket_object" "index_page" {
+  name   = "index.html"
+  source = "${var.output_folder}/index.html"
+  bucket = google_storage_bucket.static_website.name
+}
+
 # Upload a simple 404 / error page to the bucket
 resource "google_storage_bucket_object" "errorpage" {
   name         = "404.html"
@@ -123,6 +141,25 @@ Github Action
 
 #+end_src
 
+** Files
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 12:38]
+:ID:       22e804e6-85f3-4049-8c80-42b664d73f8f
+:END:
+*** tf/main.tf
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 12:38]
+:ID:       e792e354-7bd9-4762-a63e-8d6b477f933b
+:END:
+*** tf/variables.tf
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 12:38]
+:ID:       7e8e8be3-a3d5-46ac-ac8c-51ec726e6b83
+:END:
+
+#+begin_src terraform :noweb yes :tangle tf/variables.tf
+<<tf-variables>>
+#+end_src
 
 * Theme
 :PROPERTIES:
@@ -494,11 +531,13 @@ The below is required to get the right dependencies
 
 (setq weblorg-default-url "http://www.danielotto.jp")
 
+;; route for rendering the index page of the blog
 (weblorg-route
- :name "index"
- :input-pattern "index.org"
- :template "index.html"
- :output "index.html"
+ :name "blog"
+ :input-pattern "posts/*.org"
+ :input-aggregate #'weblorg-input-aggregate-all-desc
+ :template "blog.html"
+ :output "output/index.html"
  :url "/")
 
 ;; route for rendering each post
@@ -506,17 +545,8 @@ The below is required to get the right dependencies
  :name "posts"
  :input-pattern "posts/*.org"
  :template "post.html"
- :output "blog/posts/{{ slug }}.html"
+ :output "output/posts/{{ slug }}.html"
  :url "/blog/{{ slug }}.html")
-
-;; route for rendering the index page of the blog
-(weblorg-route
- :name "blog"
- :input-pattern "posts/*.org"
- :input-aggregate #'weblorg-input-aggregate-all-desc
- :template "blog.html"
- :output "blog/index.html"
- :url "/")
 
 ;; route for rendering each page
 (weblorg-route
