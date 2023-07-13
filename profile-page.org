@@ -27,6 +27,34 @@ Here we write out a =terraform= configuration declaring IAC to deploy a static w
 
 The storage bucket is created in the asia-northeast1 region, allowing the site to be situated in Tokyo based servers.
 
+*** Provider
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 12:08]
+:ID:       3da1c9ea-cc34-4402-9239-2b408f4d68c3
+:END:
+
+Setup up Google's provider:
+#+name: project-id
+#+begin_src sh :noweb yes :cache yes :results silent
+gcloud config get-value project
+#+end_src
+
+#+name: terraform-main
+#+begin_src terraform :noweb yes :tangle tf/main.tf :var id=project-id
+provider "google" {
+  credentials = file("../profile-website-391909-aa4d13879871.json")
+  project     = "<<project-id()>>"
+  region      = "asia-northeast1"
+}
+
+# GCP beta provider
+provider "google-beta" {
+  credentials = file("../profile-website-391909-aa4d13879871.json")
+  project     = "<<project-id()>>"
+  region      = "asia-northeast1"
+}
+#+end_src
+
 Setup the bucket:
 +#name: terraform-main
 #+begin_src terraform :tangle tf/main.tf
