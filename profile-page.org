@@ -65,6 +65,13 @@ In this example, =main_page_suffix= is set to "index.html", which means that if 
 
 The =not_found_page= is set to "404.html", which means that if a user requests a page that doesn't exist, they will see the contents of http://my-static-assets.storage.googleapis.com/404.html.
 
+Note that this can be set via a ~gcloud~ cli command:
+#+begin_src sh :noweb yes
+gcloud storage buckets update gs://<<bucket-name()>> --web-main-page-suffix=index.html
+#+end_src
+
+But this isn't declarative! Instead we'll use terraform again.
+
 Setup the bucket:
 #+begin_src terraform :tangle tf/main.tf
 # Create new storage bucket in the asia-northeast1 region
@@ -126,6 +133,14 @@ resource "google_storage_bucket_object" "errorpage" {
   content_type = "text/html"
   bucket       = google_storage_bucket.static_website.id
 }
+#+end_src
+
+When you host a static website on Google Cloud Storage, you need to make the bucket and its contents publicly accessible so they can be served over the internet.
+
+Here's how to make it publicly accessible via cli using ~gsutil~:
+
+#+begin_src sh :noweb yes :eval no
+gsutil iam ch allUsers:objectViewer gs://<<bucket-name()>>
 #+end_src
 
 ** git deployment
