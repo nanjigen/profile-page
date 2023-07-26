@@ -105,7 +105,7 @@ Accessible via the =terraform= command:
 terraform output bucket_name
 #+end_src
 
-Then we can set a ~terraform~ variable that points to our output folder defined later in the ~weblorg~ configuration:
+Then we can set a ~terraform~ variable that points to the output folder containing the html and other static assets defined later in the ~weblorg~ configuration:
 
 #+begin_src terraform :noweb-ref tf-variables
 variable "output_folder" {
@@ -128,7 +128,37 @@ resource "google_storage_bucket_object" "errorpage" {
   name         = "404.html"
   content      = "<html><body>404!</body></html>"
   content_type = "text/html"
-  bucket       = google_storage_bucket.static_website.id
+  bucket       = google_storage_bucket.static_website.name
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_storage_bucket_object" "posts" {
+  for_each = { for k in fileset("${path.module}/output/posts", "**") : k => k }
+  name     = "output/posts/${each.key}"
+  source   = "${var.output_folder}/posts/${each.key}"
+  bucket   = google_storage_bucket.static_website.name
+}
+#+end_src
+
+#+begin_src terraform :noweb-ref tf-variables
+variable "static_folder" {
+  description = "Bucket's static assets directory"
+  type        = string
+  default     = "../static"
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+# locals {
+#   static_files = fileset("${path.module}/static", "**")
+# }
+
+resource "google_storage_bucket_object" "static_files" {
+  for_each = { for k in fileset("${path.module}/static", "**") : k => k }
+  name     = "static/${each.key}"
+  source   = "${var.static_folder}/${each.key}"
+  bucket   = google_storage_bucket.static_website.name
 }
 #+end_src
 
