@@ -66,7 +66,7 @@ In this example, =main_page_suffix= is set to "index.html", which means that if 
 The =not_found_page= is set to "404.html", which means that if a user requests a page that doesn't exist, they will see the contents of http://my-static-assets.storage.googleapis.com/404.html.
 
 Note that this can be set via a ~gcloud~ cli command:
-#+begin_src sh :noweb yes
+#+begin_src sh :noweb yes :eval no
 gcloud storage buckets update gs://<<bucket-name()>> --web-main-page-suffix=index.html
 #+end_src
 
@@ -76,13 +76,10 @@ Setup the bucket:
 #+begin_src terraform :tangle tf/main.tf
 # Create new storage bucket in the asia-northeast1 region
 # and settings for main_page_suffix and not_found_page
-resource "random_id" "bucket_prefix" {
-  byte_length = 8
-}
 
 resource "google_storage_bucket" "static_website" {
-  name          = "${random_id.bucket_prefix.hex}-static-website-bucket"
-  location      = "ASIA-NORTHEAST1"
+  name          = "www.danielotto.jp"
+  location      = "asia-northeast1"
   storage_class = "STANDARD"
   website {
     main_page_suffix = "index.html"
