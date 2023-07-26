@@ -1,15 +1,39 @@
-#+TITLE: About
- 日英ゲームローカライザー
+#+OPTIONS: toc:nil num:nil
+#+TITLE: Hi! I'm Daniel
 
-JtoE freelance translator and Assistant Linguistics Researcher
+データアナリスト・言語学者
 
-A freelance Japanese to English translator working in the games industry, having lived and worked in Tokyo and performed localisation and LQA for some of the largest Japanese publishers. Aside from a specialisation in games and creative writing, I'm a researcher in the field of Linguistics; in the area of second language acquisition where I ply my understanding of Python and Computational Linguistics. I'm based in Tokyo, Japan.
+Data Analyst and Linguistics Researcher | Localization Specialist
 
-My main tool of use is the venerable Emacs (in the form of the [[https://github.com/hlissner/doom-emacs][Doom Emacs]] distribution). Emacs acts as a textual interface, overlaying and assisting my work in various key translation application/tools. This allows me to use Vim-like modal editing in programs such as OmegaT, memoQ and is often the case in games localisation, Microsoft Excel.
+Location: Tokyo, Japan
+
+Summary:
+
+I am a versatile professional with a background in Japanese to English translation, specializing in the games industry. Having lived and worked in Tokyo, I have collaborated with leading Japanese publishers to provide localization and linguistic quality assurance services. Alongside my expertise in games and creative writing, I have engaged in honours research within the field of Linguistics, focusing on second language acquisition and the use of Space Repetition algorithms. I leverage my proficiency in Python and Computational Linguistics to analyze linguistic and other data. Currently, I am based in Tokyo, Japan.
+
+Experience and Skills:
+
+    - Japanese to English Translation: Extensive experience as a freelance translator, delivering high-quality translations for the games industry.
+    - Localization and Linguistic Quality Assurance: Proficient in performing localization and linguistic quality assurance tasks for large Japanese publishers.
+    - Data Analysis: Skilled in utilizing Python and Computational Linguistics to analyze diverse datasets within the field of Linguistics.
+    - Tools and Software: Proficient in using Emacs (Doom Emacs distribution) as my primary tool, enabling efficient translation, programming, and analysis workflows. I employ Vim-like modal editing in various applications, enhancing my productivity. Additionally, I leverage org-mode in a literate programming style, similar to Jupyter notebooks, for cross-compatibility.
+    - Research and Development: Keen interest in Computer Science and data analysis, dedicating free time to theoretical open-source programs (e.g., org-incremental) and studying LISPs and mathematics.
 
 # If curiosity has caught your CAT tool, you can see how I work [[workflow.org][here].
 
 If you have any inquires or would like to work with me, contact me at:
-mailto:translation@danielotto.jp
+mailto:analytics@danielotto.jp
 
-[[file:../pdf/Daniel-Otto-cv.pdf][My C.V.]]
+[[file:../pdf/cv-tech-en.pdf][My C.V.]]
+------
+
+* Links
+:PROPERTIES:
+:CREATED:  [2022-10-09 Sun 18:12]
+:ID:       543b96e7-ca83-4048-b960-c2c169adf385
+:END:
+
+  * [[url_for:blog][Blog (Under construction)]]
+  * [[https://github.com/nanjigen][GitHub]]
+  * [[https://linkedin.com/in/dmotto][LinkedIn]]
+  * [[mailto:techlisper@danielotto.jp][Email]]
