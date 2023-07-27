@@ -209,6 +209,9 @@ Github Action
 :ID:       3c505129-0b7a-44a5-91a9-e48bb46413fc
 :header-args: :eval no
 :END:
+https://github.com/clarete/clarete.github.io/tree/main
+https://www.lucacambiaghi.com/posts/weblorg.html
+
 ** main
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:24]
@@ -271,6 +274,7 @@ body                             { background: var(--background); color: var(--f
 
 .pubdate { color: var(--foreground-secondary); }
 #+end_src
+
 ** common
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:24]
@@ -450,88 +454,185 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {% endblock %}
 #+end_src
 
+*** page
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 22:27]
+:ID:       97e76201-704c-4189-9e80-e8321f31ec73
+:END:
+#+begin_src web :tangle theme/templates/page.html
+{% extends "layout.html" %}
+
+{% block main %}
+  <article class="page">
+    <h1 class="page__title">
+      {{ post.title }}
+    </h1>
+    <section>
+      {{ post.html|safe }}
+    </section>
+  </article>
+{% endblock %}
+#+end_src
+
+*** post
+:PROPERTIES:
+:CREATED:  [2023-07-13 Thu 22:30]
+:ID:       08f2fbfe-79f0-42ef-a994-9edc2e8ca963
+:END:
+
+#+begin_src web :tangle theme/templates/post.html
+{% extends "layout.html" %}
+
+{% block meta %}
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:url" content="{{ post.url }}">
+  {% if post.description is defined %}
+    <meta property="og:description" content="{{ post.description }}">
+  {% elif project_description is defined %}
+    <meta property="og:description" content="{{ project_description }}">
+  {% endif %}
+  {% if post.image is defined %}
+    <meta property="og:image" content="{{ post.image }}">
+  {% elif project_image is defined %}
+    <meta property="og:image" content="{{ project_image }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+{% block main %}
+  <article class="post">
+    <h1 class="post__title">
+      {{ post.title }}
+    </h1>
+    <section class="post__meta">
+      {% if post.date is defined %}
+        {{ post.date|strftime("%b %d, %Y") }}
+      {% endif %}
+    </section>
+    <section>
+      {{ post.html|safe }}
+    </section>
+  </article>
+{% endblock %}
+#+end_src
+
 *** layout
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:36]
 :ID:       8c8ea744-8cf8-491b-ae38-476c864549c7
 :END:
-#+begin_src html  :tangle theme/templates/layout.html
+
+#+begin_src web  :tangle theme/templates/layout.html
 {# layout.html --- Base template for all other templates -*- Mode: Jinja2; -*-
 
 The blocks available in this file are:
 
 ,* title: What will show within the HTML <title> tag.
-,* description: What will show within the HTML <meta> description tag.
-,* nav: Navigation bar with Links, a default is provided
-,* body: Main content which starts empty
-,* footer: Bottom links, default is provided
+    ,* description: What will show within the HTML <meta> description tag.
+    ,* nav: Navigation bar with Links, a default is provided
+    ,* body: Main content which starts empty
+    ,* footer: Bottom links, default is provided
 
-#}
+    #}
+
 <!doctype html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <title>Daniel &mdash; {% block title %}Home{% endblock %}</title>
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="/static/img/lambda-in-8bit.png">
-    <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml">
-  </head>
-  <body>
-    {% block nav %}
-      <div class="social">
-        <div class="container">
-          <ul class="badges">
-            <li>
-              <a href="mailto:translation@danielotto.jp" alt="Email">
-                <span class="fa fa-envelope-o"></span>EMail
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/nanjigen" target="_blank" alt="Github">
-                <span class="fa fa-github-alt"></span>Github
-              </a>
-            </li>
-            <li>
-              <a href="https://linkedin.com/in/dmotto" target="_blank" alt="LinkedIn">
-                <span class="fa fa-linkedin"></span>LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="/blog/rss.xml" alt="RSS">
-                <span class="fa fa-rss"></span>RSS
-              </a>
-            </li>
-          </ul>
-          <a href="/">
-            <img class="avatar" type="image/svg+xml" src="/static/img/lambda-in-8bit.svg" alt="lambda" />
-          </a>
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <!-- <title>{% block title %}Home{% endblock %}</title> -->
+        <title>
+            {% block title %}{{ site_name | default("Daniel Otto - Home") }}{% endblock %}
+            {% block subtitle %}{% endblock %}
+        </title>
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if site_owner is defined %}<meta name="author" content="{{ site_owner }}" />{% endif %}
+        {% if site_description is defined %}<meta name="description" content="{{ site_description }}" />{% endif %}
+        {% if site_keywords is defined %}<meta name="keywords" content="{{ site_keywords }}" />{% endif %}
+        {% block meta %}{% endblock %}
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+        <!-- <link rel="stylesheet" href="{{ url_for("static", file="main.css") }}" type="text/css" /> -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="/static/img/lambda-in-8bit.png">
+        <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml">
+        {% endblock %}
+    </head>
+    <body>
+        {# Top navigation bar #}
+        {% block nav %}
+        <header>
+            <h1>
+                <a href="{{ url_for("index") }}">
+                    {% block title %}{{ site_name | default("Daniel Otto") }}{% endblock %}
+                </a>
+            </h1>
+            <a href="#main" class="visually-hidden">jump to main content</a>
+            <nav>
+                <ul class="menu">
+                    <li><a href="{{ url_for("pages", slug="about") }}">about</a></li>
+                    <li><a href="{{ url_for("index") }}">blog</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="social">
+            <div class="container">
+                <ul class="badges">
+                    <li>
+                        <a href="mailto:contact@danielotto.jp" alt="Email">
+                            <span class="fa fa-envelope-o"></span>EMail
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/nanjigen" target="_blank" alt="Github">
+                            <span class="fa fa-github-alt"></span>Github
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/in/dmotto" target="_blank" alt="LinkedIn">
+                            <span class="fa fa-linkedin"></span>LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog/rss.xml" alt="RSS">
+                            <span class="fa fa-rss"></span>RSS
+                        </a>
+                    </li>
+                </ul>
+                <a href="/">
+                    <img class="avatar" type="image/svg+xml" src="/static/img/lambda-in-8bit.svg" alt="lambda" />
+                </a>
+            </div>
         </div>
-      </div>
-    {% endblock %}
+        {% endblock %}
 
-    <div class="post">
-      <div class="container">
-        {% block body %}{% endblock %}
-      </div>
-    </div>
+        {# Probably where most of the action will happen #}
+        <main id="main">
+            {% block main %}{% endblock %}
+        </main>
 
-    <div class="footer">
-      {% block footer %}
-        <div class="bg">
-          <div class="container">
-            &#169; Daniel Otto &mdash; All written content on this
-            website reflects my personal opinion and it's available
-            under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
-          </div>
+        <div class="post">
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
         </div>
-      {% endblock %}
-    </div>
-  </body>
+
+        <div class="footer">
+            {% block footer %}
+            <div class="bg">
+                <div class="container">
+                    &#169; Daniel Otto &mdash; All written content on this
+                    website reflects my personal opinion and it's available
+                    under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+
+    </body>
 </html>
 #+end_src
+
 * publish.el
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:14]
