@@ -698,19 +698,10 @@ The below is required to get the right dependencies
 (weblorg-site
  :template-vars '(("site_name" . "Daniel Otto's profile site")
                   ("site_author" "Daniel Otto")
-                  ("site_email" . "techlisper@danielotto.jp")
+                  ("site_email" . "contact@danielotto.jp")
                   ("site_description" . "My personal profile and blog about Linguistics, computing and translation.")))
 
-(setq weblorg-default-url "http://www.danielotto.jp")
-
-;; route for rendering the index page of the blog
-(weblorg-route
- :name "blog"
- :input-pattern "posts/*.org"
- :input-aggregate #'weblorg-input-aggregate-all-desc
- :template "blog.html"
- :output "output/index.html"
- :url "/")
+(setq weblorg-default-url "https://www.danielotto.jp")
 
 ;; route for rendering each post
 (weblorg-route
@@ -718,7 +709,25 @@ The below is required to get the right dependencies
  :input-pattern "posts/*.org"
  :template "post.html"
  :output "output/posts/{{ slug }}.html"
- :url "/blog/{{ slug }}.html")
+ :url "/posts/{{ slug }}.html")
+
+;; route for rendering the posts page of the blog
+(weblorg-route
+ :name "blog"
+ :input-pattern "posts/*.org"
+ :input-aggregate #'weblorg-input-aggregate-all-desc
+ :template "blog.html"
+ :output "output/posts.html"
+ :url "/posts.html")
+
+;; route for rendering the index page of the blog
+(weblorg-route
+ :name "index"
+ :input-pattern "pages/about.org"
+ ;; :input-aggregate #'weblorg-input-aggregate-all-desc ;;BUG
+ :template "index.html"
+ :output "output/index.html"
+ :url "/")
 
 ;; route for rendering each page
 (weblorg-route
@@ -735,6 +744,10 @@ The below is required to get the right dependencies
 
 ;; fire the engine and export all the files declared in the routes above
 (weblorg-export)
+#+end_src
+
+#+begin_src sh :results silent
+emacs --script publish.el
 #+end_src
 
 * NEXT Fix encryption on profile site                               :@computer:
