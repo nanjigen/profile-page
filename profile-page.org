@@ -447,7 +447,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {# index.html --- Template for my website's index page -*- Mode: Jinja2; -*- #}
 {% extends "layout.html" %}
 
-{% block body %}
+{% block main %}
   <h1>{{ post.title }}</h1>
 
   {{ post.html|safe }}
@@ -506,13 +506,42 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
     </h1>
     <section class="post__meta">
       {% if post.date is defined %}
-        {{ post.date|strftime("%b %d, %Y") }}
+        {{ post.date | strftime("%Y-%m-%d") }}
       {% endif %}
     </section>
     <section>
       {{ post.html|safe }}
     </section>
   </article>
+{% endblock %}
+#+end_src
+
+*** blog
+:PROPERTIES:
+:CREATED:  [2023-07-27 Thu 13:28]
+:ID:       2d421477-ad84-408c-b8a3-4b612f949d82
+:END:
+
+#+begin_src web :tangle theme/templates/blog.html
+{# blog.html --- Blog template; -*- Mode: Jinja2; -*- #}
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="title">
+    <h1>blog</h1>
+  </div>
+
+  <div class="content blog">
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ url_for("posts", slug=post.slug) }}">
+            {{ post.date|strftime("%b %d, %Y") }}: {{ post.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
 #+end_src
 
@@ -571,7 +600,7 @@ The blocks available in this file are:
             <nav>
                 <ul class="menu">
                     <li><a href="{{ url_for("pages", slug="about") }}">about</a></li>
-                    <li><a href="{{ url_for("index") }}">blog</a></li>
+                    <li><a href="{{ url_for("blog",  slug="blog") }}">posts</a></li>
                 </ul>
             </nav>
         </header>
