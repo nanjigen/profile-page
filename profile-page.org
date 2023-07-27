@@ -203,7 +203,12 @@ Github Action
 <<tf-variables>>
 #+end_src
 
-* Theme
+* Weblorg configuration
+:PROPERTIES:
+:CREATED:  [2023-07-27 Thu 15:13]
+:ID:       a8a2cca3-ac76-49e2-b826-efc504567c08
+:END:
+** Theme
 :PROPERTIES:
 :CREATED:  [2022-09-22 Thu 16:57]
 :ID:       3c505129-0b7a-44a5-91a9-e48bb46413fc
@@ -212,7 +217,7 @@ Github Action
 https://github.com/clarete/clarete.github.io/tree/main
 https://www.lucacambiaghi.com/posts/weblorg.html
 
-** main
+*** main
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:24]
 :ID:       7e9b9c56-f9f6-4d51-9f13-245a4268897d
@@ -275,7 +280,7 @@ body                             { background: var(--background); color: var(--f
 .pubdate { color: var(--foreground-secondary); }
 #+end_src
 
-** common
+*** common
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:24]
 :ID:       6d7e0f09-41a9-4671-8f4e-0f386d9c1f7c
@@ -361,7 +366,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 }
 #+end_src
 
-** colors
+*** colors
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:24]
 :ID:       76fe91b2-6299-401f-9cb1-69ba8adffe14
@@ -432,13 +437,13 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 }
 #+end_src
 
-** Templates
+*** Templates
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:23]
 :ID:       7d8f1b58-b897-46ac-a990-20fe9304c4d8
 :END:
 
-*** index
+**** index
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:36]
 :ID:       4430ba49-0262-4777-b7a5-eb8ff9eb1122
@@ -454,7 +459,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {% endblock %}
 #+end_src
 
-*** page
+**** page
 :PROPERTIES:
 :CREATED:  [2023-07-13 Thu 22:27]
 :ID:       97e76201-704c-4189-9e80-e8321f31ec73
@@ -474,7 +479,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {% endblock %}
 #+end_src
 
-*** post
+**** post
 :PROPERTIES:
 :CREATED:  [2023-07-13 Thu 22:30]
 :ID:       08f2fbfe-79f0-42ef-a994-9edc2e8ca963
@@ -516,7 +521,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {% endblock %}
 #+end_src
 
-*** blog
+**** blog
 :PROPERTIES:
 :CREATED:  [2023-07-27 Thu 13:28]
 :ID:       2d421477-ad84-408c-b8a3-4b612f949d82
@@ -545,7 +550,7 @@ code                { background: #3c3836; color: #fff; padding: 0 0.5rem; borde
 {% endblock %}
 #+end_src
 
-*** layout
+**** layout
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:36]
 :ID:       8c8ea744-8cf8-491b-ae38-476c864549c7
@@ -662,7 +667,7 @@ The blocks available in this file are:
 </html>
 #+end_src
 
-* publish.el
+** publish.el
 :PROPERTIES:
 :CREATED:  [2022-10-09 Sun 18:14]
 :ID:       8c6bdab7-8977-40b2-a575-80bdb7cf4966
@@ -749,10 +754,3 @@ The below is required to get the right dependencies
 #+begin_src sh :results silent
 emacs --script publish.el
 #+end_src
-
-* NEXT Fix encryption on profile site                               :@computer:
-:PROPERTIES:
-:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
-:CREATED:  [2023-01-06 Fri 15:03]
-:ID:       4e88e18a-fcf1-44d5-827b-5b8966056c54
-:END:
