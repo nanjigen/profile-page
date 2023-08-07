@@ -83,6 +83,9 @@ For example, getting the project name:
 gcloud config get-value project
 #+end_src
 
+The storage bucket is created in the =asia-northeast1= region, allowing the site to be situated on Tokyo based servers, making access fast for potential employers based locally.
+
+Now we can setup Google's Terraform provider. Notice the =<​<​project-id()​>​>=  which will run when we tangle the file.
 #+name: terraform-main
 #+begin_src terraform :noweb yes :tangle tf/main.tf :var id=project-id
 provider "google" {
