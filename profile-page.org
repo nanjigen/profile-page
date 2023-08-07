@@ -36,6 +36,29 @@ The following details my Google Cloud configuration as =terraform= =.tf= files a
 
 Here we write out a [[https://registry.terraform.io/modules/gruntwork-io/static-assets/google/latest/submodules/cloud-storage-static-website][terraform]] configuration declaring IaC to [[https://cloud.google.com/storage/docs/hosting-static-website][deploy a static website with a custom domain on Google cloud storage]]. This makes use of the =cloud-storage-static-website= module.
 
+*** Authentication and local setup
+:PROPERTIES:
+:CREATED:  [2023-07-25 Tue 09:45]
+:ID:       0f82b932-a0c0-4efb-8c1c-368f5a767c74
+:END:
+
+Its useful to have a local install of ~gcloud~ and ~terraform~ in order to work with Google Cloud. I do this with ~nix-env~ as these packages aren't available in the ~guix~ repos:
+
+#+begin_src sh :eval no
+nix-env -iA nixpkgs.google-cloud-sdk nixpkgs.terraform
+#+end_src
+
+In the future I may change this to a buffer-local nix-shell setup or write packages definitions for Guix.
+
+Run ~gcloud~ in your terminal, following the sign-in wizard to connect to your project.
+
+We then need to generate a credentials file so that Terraform can authenticate against your project.
+
+Get the name of the service account:
+#+begin_src shell :noweb yes :results silent
+gcloud iam service-accounts list --project=<<project-id()>>
+#+end_src
+
 
 *** Provider
 :PROPERTIES:
