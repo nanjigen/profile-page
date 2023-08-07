@@ -108,9 +108,14 @@ provider "google-beta" {
 :ID:       f0d0b8fe-e9f1-443e-b1d3-1ae23d27de38
 :END:
 
-In this example, =main_page_suffix= is set to "index.html", which means that if a user navigates to http://<<bucket_name()>>.storage.googleapis.com/, they will see the contents of http://<<bucket_name()>>.storage.googleapis.com/index.html.
+In this example, =main_page_suffix= is set to "index.html", which means that if a user navigates to http://bucket_name.storage.googleapis.com/, they will see the contents of http://bucket_name.storage.googleapis.com/index.html.
 
 The =not_found_page= is set to "404.html", which means that if a user requests a page that doesn't exist, they will see the contents of http://my-static-assets.storage.googleapis.com/404.html.
+
+#+name: bucket-name
+#+begin_src sh :dir tf :noweb yes :cache yes :results silent
+terraform output bucket_name
+#+end_src
 
 Note that this can be set via a ~gcloud~ cli command:
 #+begin_src sh :noweb yes :eval no
