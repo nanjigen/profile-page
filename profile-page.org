@@ -59,6 +59,16 @@ Get the name of the service account:
 gcloud iam service-accounts list --project=<<project-id()>>
 #+end_src
 
+*** Delegate owners
+:PROPERTIES:
+:CREATED:  [2023-07-30 Sun 12:51]
+:ID:       01ed72db-2064-4e0a-a2a2-d617353b0973
+:END:
+
+Because we are using a custom domain name, we need to verify our ownership with Google. Follow the following guide, note that the menus and processes will like differ slightly between domain providers.
+
+https://cloud.google.com/storage/docs/domain-name-verification
+
 
 *** Provider
 :PROPERTIES:
