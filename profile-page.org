@@ -141,22 +141,6 @@ resource "google_storage_bucket" "static_website" {
 
 #+end_src
 
-The random_id generation is important for x, but it prevents us from knowing the bucket name ahead of apply, so we define an output that can be accessed after subsequent applys:
-
-#+begin_src terraform :tangle tf/main.tf
-output "bucket_name" {
-  value = google_storage_bucket.static_website.name
-  description = "The name of the bucket"
-}
-
-#+end_src
-
-Accessible via the =terraform= command:
-#+name: bucket-name
-#+begin_src sh :dir tf :noweb yes :cache yes :results silent
-terraform output bucket_name
-#+end_src
-
 Then we can set a ~terraform~ variable that points to the output folder containing the html and other static assets defined later in the ~weblorg~ configuration:
 
 #+begin_src terraform :noweb-ref tf-variables
