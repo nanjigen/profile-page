@@ -1,3 +1,15 @@
+#+TITLE: Static Blog with Google Cloud Storage and Weblorg
+#+DATE: <2023-07-27 Thu>
+
+This is a [[https://howardism.org/Technical/Emacs/literate-devops.html][Literate DevOps]] Google Cloud Platform implementation document which tells the story of the current state of the configuration of the site, while also declaring it in the form of source code. This is achieved via org-mode's ~noweb~ feature, allowing code blocks in the document to be tangled out to specified files.
+
+It aims to demonstrate my capacity with GCP computing, serve as documentation for myself and also detailing to others how they might deploy a static website to Google Cloud Storage.
+
+Tools used:
+- [[https://www.terraform.io/][Terraform]]: as declarative IaC (Infrastructure As Code) files and the commandline tool =terraform=
+- [[https://cloud.google.com/][GCP]]: with its ~gcloud~ and ~gsutil~ terminal access for management from my local console
+- [[https://emacs.love/weblorg/][Weblorg]]: A static HTML generator that uses Elisp
+- [[https://github.com/features/actions][Github Actions]]: For automating upload of static files in a CI/CD manner
 
 * Cloud configuration
 :PROPERTIES:
