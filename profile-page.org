@@ -17,15 +17,7 @@ Tools used:
 :ID:       e5f2285b-68f5-43a0-bc00-5a20fc657a73
 :END:
 
-** MX records
-:PROPERTIES:
-:CREATED:  [2023-01-06 Fri 15:03]
-:ID:       9bb17b3f-9aec-475b-9847-12d73c5aceb3
-:END:
-
-danielotto.jp.  IN MX 10 mxext1.mailbox.org.
-danielotto.jp.  IN MX 10 mxext2.mailbox.org.
-danielotto.jp.  IN MX 20 mxext3.mailbox.org.
+The following details my Google Cloud configuration as =terraform= =.tf= files and =gcloud/gsutil= commands. Where possible I have attempted to make the document reproducible with variables, requiring only a few manual interventions. Especially after the initial setup it should be fairly automated - you'll have to actually write blog posts yourself though!
 
 ** terraform
 :PROPERTIES:
