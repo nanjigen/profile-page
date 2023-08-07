@@ -75,8 +75,9 @@ https://cloud.google.com/storage/docs/domain-name-verification
 :CREATED:  [2023-07-13 Thu 12:08]
 :ID:       3da1c9ea-cc34-4402-9239-2b408f4d68c3
 :END:
+The Terraform configuration will rely on specific variables related to your Google Cloud project. We can use the ~gcloud~ command-line tool to set and get these values, and with the help of ~org-mode noweb~ [[https://orgmode.org/manual/Noweb-Reference-Syntax.html][references]], inline the results of get commands into the configuration blocks.
 
-Setup up Google's provider:
+For example, getting the project name:
 #+name: project-id
 #+begin_src sh :noweb yes :cache yes :results silent
 gcloud config get-value project
