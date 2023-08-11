@@ -21,8 +21,8 @@ jobs:
 
     - name: Setup Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
-        project_id: profile-website-391909
-        # export_default_credentials: true
+      with:
+        project_id: 'profile-website-391909'
 
     - name: Deploy to GCS
       run: |

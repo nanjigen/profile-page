@@ -297,8 +297,8 @@ The =with= section provides configuration:
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
     - name: Setup Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
-        project_id: profile-website-391909
-        # export_default_credentials: true
+      with:
+        project_id: 'profile-website-391909'
 #+end_src
 
 - =service_account_key=: This is the Service Account JSON key stored as a secret in your GitHub repository. It's used to authenticate with Google Cloud.
