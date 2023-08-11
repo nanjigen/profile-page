@@ -214,7 +214,22 @@ gsutil iam ch allUsers:objectViewer gs://<<bucket-name()>>
 :END:
 https://medium.com/interleap/automating-terraform-deployment-to-google-cloud-with-github-actions-17516c4fb2e5
 
-Github Action
+Setting up a CI/CD pipeline for your site using GitHub Actions can streamline your deployment process, ensuring that changes to the site are automatically tested and deployed to the Google Cloud Storage bucket. This is useful not only to publish new posts, but also to have configurations like ~jinja~ or ~CSS~ code to propagate to the live site after testing locally in an automated fashion.
+
+Setting up CI/CD with GitHub Actions in 4 steps:
+
+1. GitHub Repository: Ensure your website's code is stored in a GitHub repository.
+
+2. Service Account: Create a Google Cloud Service Account with permissions to manage the Google Cloud Storage bucket. Download the JSON key for this service account.
+
+3. GitHub Secrets: Store the Service Account JSON key as a secret in your GitHub repository. This will allow GitHub Actions to authenticate with Google Cloud. Navigate to your =repository > Settings > Secrets > New repository secret=. Name it ~GCP_SA_KEY~.
+
+4. GitHub Action Workflow: Describe a declarative workflow.
+
+Create a new file in your repository: =.github/workflows/deploy.yml= with the following content:
+
+The =.yaml= file you use for GitHub Actions defines a workflow. This workflow is a series of automated procedures that run when a specific event occurs in your GitHub repository, such as a =push= to the =main= branch. Let's break down the provided =.yaml= file step by step:
+
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
 
 #+end_src
