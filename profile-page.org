@@ -231,8 +231,94 @@ Create a new file in your repository: =.github/workflows/deploy.yml= with the fo
 The =.yaml= file you use for GitHub Actions defines a workflow. This workflow is a series of automated procedures that run when a specific event occurs in your GitHub repository, such as a =push= to the =main= branch. Let's break down the provided =.yaml= file step by step:
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
-
+name: Deploy Website
 #+end_src
+
+Name the workflow so you can identify it in the GitHub Actions UI, here we use "Deploy Website" - descriptive!
+
+*** Events
+:PROPERTIES:
+:CREATED:  [2023-08-07 Mon 12:46]
+:ID:       846e1424-8853-481b-ad09-d03f32a45792
+:END:
+
+This section defines the event that triggers the workflow. In this case, the workflow runs whenever there's a =push= event to the =main= branch:
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+on:
+  push:
+    branches:
+      - main  # or your default branch
+#+end_src
+
+*** Jobs
+:PROPERTIES:
+:CREATED:  [2023-08-07 Mon 12:47]
+:ID:       40ad0ce2-b847-4248-9dec-3aba8a99c820
+:END:
+
+Here, we're defining a [[https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners][Github-hosted runner]] as a job named =deploy= that will run on the latest version of the Ubuntu virtual machine provided by GitHub:
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+#+end_src
+
+**** Steps
+:PROPERTIES:
+:CREATED:  [2023-08-07 Mon 12:47]
+:ID:       7efb2e51-e2cb-41f0-bb47-62c9688e3e98
+:END:
+
+This section lists the steps that the job will execute in sequence:
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+    steps:
+#+end_src
+
+This step checks out your repository's code onto the runner (the virtual machine executing the job). It uses a pre-built action =actions/checkout@v2= provided by GitHub:
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+    - name: Checkout code
+      uses: actions/checkout@v2
+#+end_src
+
+This step sets up the Google Cloud CLI on the runner. It uses a pre-built action =google-github-actions/setup-gcloud@master= provided by Google. The =with= section provides configuration:
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        project_id: profile-website-391909
+        export_default_credentials: true
+#+end_src
+
+- =service_account_key=: This is the Service Account JSON key stored as a secret in your GitHub repository. It's used to authenticate with Google Cloud.
+- =project_id=: The ID of your Google Cloud project.
+- =export_default_credentials=: This exports the credentials, allowing subsequent steps to use them.
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
+    - name: Deploy to GCS
+      run: |
+        gsutil rsync -R ./output gs://www.danielotto.jp/output
+#+end_src
+
+This step deploys your site to Google Cloud Storage. It uses the =gsutil= command, which is a part of the Google Cloud SDK:
+
+- =gsutil rsync=: This command synchronizes the contents of a directory with a bucket.
+- =-R=: This flag ensures the command is recursive, so it includes all sub-directories.
+- =./path_to_site_files=: This is the local directory containing your site's files.
+- =gs://your-bucket-name/=: This is the destination bucket in Google Cloud Storage.
+
+In essence, this =.yaml= file defines a workflow that:
+
+1. Checks out your code.
+2. Sets up the Google Cloud CLI.
+3. Syncs your site's files with a Google Cloud Storage bucket.
+
+When you push to the =main= branch, GitHub Actions reads this =.yaml= file, sets up a virtual machine, and executes the defined steps in order. This automates the deployment of a static site to Google Cloud Storage.
 
 ** Files
 :PROPERTIES:
