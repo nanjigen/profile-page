@@ -284,15 +284,21 @@ This step checks out your repository's code onto the runner (the virtual machine
       uses: actions/checkout@v2
 #+end_src
 
-This step sets up the Google Cloud CLI on the runner. It uses a pre-built action [[https://github.com/google-github-actions/setup-gcloud][google-github-actions/setup-gcloud]] provided by Google. Note that we don't use the =main= branch, but instead =v1= as suggested by the action's warnings. The =with= section provides configuration:
+The following steps set up the Google Cloud CLI on the runner. It first authenticates via the Service Account Key JSON we provided to Github as a secret using the pre-built ~auth~ action from [[https://github.com/google-github-actions/auth][google-github-actions/auth]]. It then uses another pre-built from the [[https://github.com/google-github-actions/setup-gcloud][google-github-actions/setup-gcloud]] repo provided by Google. Note that we don't use the =main= branch, but instead =v1= as [[https://github.com/google-github-actions/setup-gcloud#versioning][per the suggestion]] on the action's repo.
+The =with= section provides configuration:
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
-    - name: Setup Google Cloud CLI
-      uses: google-github-actions/setup-gcloud@v1
+    - name: Authentication
+      uses: google-github-actions/auth@v1
       with:
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+#+end_src
+
+#+begin_src yaml :tangle .github/workflows/workflow.yaml
+    - name: Setup Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
         project_id: profile-website-391909
-        export_default_credentials: true
+        # export_default_credentials: true
 #+end_src
 
 - =service_account_key=: This is the Service Account JSON key stored as a secret in your GitHub repository. It's used to authenticate with Google Cloud.
