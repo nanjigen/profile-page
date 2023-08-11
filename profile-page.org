@@ -284,11 +284,11 @@ This step checks out your repository's code onto the runner (the virtual machine
       uses: actions/checkout@v2
 #+end_src
 
-This step sets up the Google Cloud CLI on the runner. It uses a pre-built action [[https://github.com/google-github-actions/setup-gcloud][google-github-actions/setup-gcloud]] =@main= provided by Google. The =with= section provides configuration:
+This step sets up the Google Cloud CLI on the runner. It uses a pre-built action [[https://github.com/google-github-actions/setup-gcloud][google-github-actions/setup-gcloud]] provided by Google. Note that we don't use the =main= branch, but instead =v1= as suggested by the action's warnings. The =with= section provides configuration:
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
     - name: Setup Google Cloud CLI
-      uses: google-github-actions/setup-gcloud@main
+      uses: google-github-actions/setup-gcloud@v1
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: profile-website-391909
