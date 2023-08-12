@@ -26,17 +26,14 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
   "font-lato"
   "font-awesome"))
 #+end_src
-
-** TODO Move LaTeX Config to standard export
+** TODO Color scheme
 :PROPERTIES:
-:CREATED:  [2022-10-10 Mon 11:21]
-:ID:       e6b39d7d-2964-477d-94cc-22a3aba9ddbb
+:CREATED:  [2023-07-29 Sat 09:05]
+:ID:       a373973c-e31b-4f4b-97fa-bb0e915b2752
 :END:
-#+BEGIN_SRC emacs-lisp :exports none  :results none :eval always
-(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf")))
 
-(add-to-list 'org-latex-classes
-             '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+#+BEGIN_SRC latex :noweb-ref latex-config :exports none  :results none :eval no
+\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
 % Change the page layout if you need to
 \\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
@@ -91,8 +88,12 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 \\colorlet{headingrule}{dracula-bullets}
 \\colorlet{subheading}{dracula-orange}
 \\colorlet{accent}{dracula-page-links}
+\\colorlet{hyperlink}{dracula-links-hover}
 \\colorlet{emphasis}{dracula-comment}
 \\colorlet{body}{dracula-background}
+
+%set link colors
+% \\hypersetup{urlcolor=dracula-links-hover}
 
 % Change some fonts, if necessary
 \\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
@@ -104,6 +105,20 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 % for \cvskill if you want to
 \\renewcommand{\\itemmarker}{{\\small\\textbullet}}
 \\renewcommand{\\ratingmarker}{\\faCircle}
+#+END_SRC
+
+
+** TODO Move LaTeX Config to standard export
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       e6b39d7d-2964-477d-94cc-22a3aba9ddbb
+:END:
+#+BEGIN_SRC emacs-lisp :noweb yes :exports none  :results none :eval always
+(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf")))
+
+(add-to-list 'org-latex-classes
+             '("altacv" "
+<<latex-config>>
 "
 
                ("\\cvsection{%s}" . "\\cvsection{%s}")
@@ -112,8 +127,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 (setq org-latex-default-packages-alist
       '(("rm" "roboto"  t)
         ("defaultsans" "lato" t)
-        ("" "paracol" t)
-        ))
+        ("" "paracol" t)))
 #+END_SRC
 #+LATEX_CLASS: altacv
 #+LATEX_HEADER: \columnratio{0.6} % Set the left/right column width ratio to 6:4.
@@ -131,6 +145,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+LATEX_HEADER: \usepackage{amssymb}
 #+LATEX_HEADER: \usepackage{capt-of}
 #+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks=true, urlcolor=dracula-external-links}
 #+LATEX_HEADER: \usepackage[bottom]{footmisc}
 
 ** Exporter Settings
@@ -178,7 +193,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 #+begin_export latex
 \personalinfo{
   \homepage{www.danielotto.jp}
-  \email{analytics@danielotto.jp}
+  \email{contact@danielotto.jp}
   \phone{+81 80 7650 1991}
   \location{Tokyo, Japan}
   \github{nanjigen}
@@ -210,7 +225,7 @@ This branch is based off of the config found [[https://www.aidanscannell.com/pos
 :END:
 
 {{{cvevent(English Teacher, KDI, March 2023 -- Ongoing, Tokyo\, Japan)}}}
-Teaching position at a well known bilingual Yochien, where I continue providing linguistics expertise in teaching strategies aimed at children. Also provided interpretation for monolingual co-workers on part of Japanese management.
+Teaching position at a bilingual Yochien, where I continue providing linguistics expertise in teaching strategies. Provide interpretation for monolingual co-workers on part of Japanese management.
 {{{par-div}}}
 
 *** English Teacher                                                  :ignore:
@@ -228,7 +243,7 @@ Plied my understanding of linguistics and specialisation in second language acqu
 :ID:       38be5e95-8117-48e6-ae8f-bf7f1387c3bc
 :END:
 {{{cvevent(Freelance translator, self-employed, Sept 2020 -- Ongoing, Tokyo\, Sydney)}}}
-Variously residing between Japan and Australia working on Japanese to English game localisation and linguistic quality assurance over both mobile and console titles.
+Worked on Japanese to English game localisation and linguistic quality assurance over both mobile and console game titles.
 {{{par-div}}}
 
 *** Lead Audio-Visual Technician            :ignore:
@@ -237,13 +252,59 @@ Variously residing between Japan and Australia working on Japanese to English ga
 :ID:       ce053e16-3199-4c78-97c2-39bef6ba5ce0
 :END:
 {{{cvevent(Lead Audio-Visual Technician, Showtime Productions, Nov 2016 -- Feb 2022, Sydney, Australia)}}}
-Lead technician operating across several convention centers - planning, setup, and execution of audio-visual requirements for conferences, trade shows, and special events; accommodating up to 1,500 attendees. Collaborated closely with event organizers, presenters, and clients to understand their audio-visual needs and provide tailored solutions, often giving stage direction and stage presence coaching.
+Lead Audio-Visual Technician at Showtime Productions. Responsibilities encompassed seamless execution and coordination of audio-visual setups for a wide range of events, such as conferences, trade shows, and special gatherings, accommodating audiences of up to 1,500 attendees.
 
+** Technical Skills
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       9eb06397-8706-4782-8e25-64cf64187d5f
+:END:
+- Software
+{{{cvtag(\faLinux GNU/Linux)}}}
+{{{cvtag(\faGraph Tableau)}}}
+{{{cvtag(\faBarChart Looker)}}}
+{{{cvtag(\mfGoogle Google Sheets)}}}
+{{{cvtag(\faCloud GCP)}}}
+{{{cvtag(\faEmacs Emacs)}}}
+{{{cvtag(\faGit)}}}
+{{{cvtag(\faGNU GuixSD)}}}
+{{{cvtag(\mfVim Vim)}}}
+{{{par-div}}}
+
+- Programming
+{{{cvtag(\faNotebook Jupyter)}}}
+{{{cvtag(\mfPython Python)}}}
+{{{cvtag(\faTerraform Terraform)}}}
+{{{cvtag(\faRProject R)}}}
+{{{cvtag(\faDatabase SQL)}}}
+{{{cvtag(\mfClojure Clojure)}}}
+{{{cvtag(\mfShell BASH)}}}
+{{{cvtag(\LaTeX)}}}
+{{{par-div}}}
+
+- Frameworks
+{{{cvtag(\faPython pandas)}}}
+{{{cvtag(\faPython matplotlib)}}}
+{{{cvtag(\faPython plotly)}}}
+{{{cvtag(\mfSpark Apache Spark)}}}
+{{{cvtag(\faApache Apache Airflow)}}}
+
+{{{new-page}}}
 ** Projects
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       c250d349-dcb9-4186-b3e7-37580e62d910
 :END:
+*** Portfolio Website                                                :ignore:
+:PROPERTIES:
+:CREATED:  [2022-10-10 Mon 11:21]
+:ID:       6c2239cf-4d30-4490-8387-9e0c3a5bb06b
+:END:
+{{{cvevent(Profile Website, Personal Project, 2023, Tokyo\, Japan)}}}
+- Used Terraform in the Infrastructure as Code model to deploy my static Website to Google Cloud Platform Cloud Storage. Viewable as my website ([[https://www.danielotto.jp][www.danielotto.jp]]) and the related [[https://www.danielotto.jp/posts/static-blog-with-google-cloud-storage-and-weblorg.html][post]].
+{{{par-div}}}
+{{{divider}}}
+
 *** Google Data Analytics Certificate: Capstone Project              :ignore:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
@@ -251,6 +312,7 @@ Lead technician operating across several convention centers - planning, setup, a
 :END:
 {{{cvevent(Capstone Project, Coursera, 2023/02 -- Now, Tokyo\, Japan)}}}
 - Capstone project for the completion of the Google Data Analytics Professional Certificate. Utilized tools such as =Beautifulsoup4= in order to scrape the SUUMO real estate website and analyze the results. ~Pandas~ was used for data cleaning and loading into a ~sqlite~ database, and with =bs4= and the =Pandas.Dataframe.pipe= method an ETL pipeline was established. Data was then extracted from the database and analysis was performed with an eye towards producing an interactive ~Plotly/Dash~ dashboard website. Viewable [[https://github.com/nanjigen/tokyo-rentals-analysis][here]].
+{{{par-div}}}
 
 *** Honours thesis                                                   :ignore:
 :PROPERTIES:
@@ -349,35 +411,15 @@ Majored in Linguistics and Japanese Studies. This included the study of Japanese
 :ID:       c706263e-1aa0-4790-8c48-346e18ae49f1
 :END:
 
-** Technical Skills
-:PROPERTIES:
-:CREATED:  [2022-10-10 Mon 11:21]
-:ID:       9eb06397-8706-4782-8e25-64cf64187d5f
-:END:
-- Software
-{{{cvtag(\faLinux GNU/Linux)}}}
-{{{cvtag(\mfChart Tableau)}}}
-{{{cvtag(\faEmacs Emacs)}}}
-{{{cvtag(Guix)}}}
-{{{cvtag(\mfVim Vim)}}}
-- Programming
-{{{cvtag(\faNotebook Jupyter)}}}
-{{{cvtag(\mfPython Python)}}}
-{{{cvtag(\faRProject R)}}}
-{{{cvtag(\faDatabase SQL)}}}
-{{{cvtag(\mfClojure Clojure)}}}
-{{{cvtag(\mfShell BASH)}}}
-{{{cvtag(\LaTeX)}}}
-
-#+begin_export latex
-\end{paracol}
-#+end_export
-
 ** Referees                                                         :noexport:
 :PROPERTIES:
 :CREATED:  [2022-10-10 Mon 11:21]
 :ID:       8223ddb9-633b-4585-9dcf-43417cff1618
 :END:
+
+#+begin_export latex
+\end{paracol}
+#+end_export
 
 * Export                                                             :noexport:
 :PROPERTIES:

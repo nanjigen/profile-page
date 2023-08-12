@@ -1,4 +1,5 @@
 #+TITLE: Using Excel-vim for translating in Excel
+#+DRAFT: t
 
 * NEXT Brainstorm Excel shortcuts+vim keys blog post :incremental:@computer:#translation:
 :PROPERTIES:

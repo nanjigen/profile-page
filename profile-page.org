@@ -28,6 +28,34 @@ There are several advantages to storing your static resources, such as images or
 
 The following details my Google Cloud configuration as =terraform= =.tf= files and =gcloud/gsutil= commands. Where possible I have attempted to make the document reproducible with variables, requiring only a few manual interventions. Especially after the initial setup it should be fairly automated - you'll have to actually write blog posts yourself though!
 
+** Setup
+:PROPERTIES:
+:CREATED:  [2023-08-10 Thu 19:16]
+:ID:       8ee2d33a-dfc1-49f5-a07c-c2da5dcb605c
+:END:
+*** guix
+:PROPERTIES:
+:CREATED:  [2023-08-10 Thu 19:16]
+:ID:       1b8812c0-0f5e-4598-86ab-cddeef66415b
+:END:
+#+begin_src scheme :tangle manifest.scm
+(specifications->manifest
+ (list "emacs-no-x"
+       "bash"
+       "nix"))
+#+end_src
+
+#+begin_src nix :tangle shell.nix
+with import <nixpkgs> {};
+
+mkShell {
+  buildInputs = [
+    google-cloud-sdk
+    terraform
+  ];
+}
+#+end_src
+
 ** terraform
 :PROPERTIES:
 :CREATED:  [2023-07-05 Wed 20:20]
@@ -141,8 +169,23 @@ resource "google_storage_bucket" "static_website" {
 
 #+end_src
 
-Then we can set a ~terraform~ variable that points to the output folder containing the html and other static assets defined later in the ~weblorg~ configuration:
+Then we can set a ~terraform~ variable that points to the output folder containing the html and other static assets defined later in the ~weblorg~ configuration.
 
+**** File management
+:PROPERTIES:
+:CREATED:  [2023-08-07 Mon 16:30]
+:ID:       db7781cd-27cc-4e95-923c-a16ca6963ae4
+:END:
+
+Here we are uploading our files by creating objects in our Google Cloud Storage bucket.
+
+***** HTML directory
+:PROPERTIES:
+:CREATED:  [2023-08-07 Mon 16:07]
+:ID:       34b6e5f5-8802-4221-91a7-e0daf9acd609
+:END:
+
+The output directory where =weblorg= sends rendered pages:
 #+begin_src terraform :noweb-ref tf-variables
 variable "output_folder" {
   description = "Bucket's html directory"
@@ -151,11 +194,19 @@ variable "output_folder" {
 }
 #+end_src
 
+
 #+begin_src terraform :tangle tf/main.tf
 # Upload a simple index.html page to the bucket
 resource "google_storage_bucket_object" "index_page" {
   name   = "index.html"
   source = "${var.output_folder}/index.html"
+  bucket = google_storage_bucket.static_website.name
+}
+
+# Upload a the aggregate posts.html page to the bucket
+resource "google_storage_bucket_object" "posts_page" {
+  name   = "posts.html"
+  source = "${var.output_folder}/posts.html"
   bucket = google_storage_bucket.static_website.name
 }
 
@@ -169,9 +220,9 @@ resource "google_storage_bucket_object" "errorpage" {
 #+end_src
 
 #+begin_src terraform :tangle tf/main.tf
-resource "google_storage_bucket_object" "posts" {
+resource "google_storage_bucket_object" "posts_folder" {
   for_each = { for k in fileset("${path.module}/output/posts", "**") : k => k }
-  name     = "output/posts/${each.key}"
+  name     = "posts/${each.key}"
   source   = "${var.output_folder}/posts/${each.key}"
   bucket   = google_storage_bucket.static_website.name
 }
@@ -186,10 +237,6 @@ variable "static_folder" {
 #+end_src
 
 #+begin_src terraform :tangle tf/main.tf
-# locals {
-#   static_files = fileset("${path.module}/static", "**")
-# }
-
 resource "google_storage_bucket_object" "static_files" {
   for_each = { for k in fileset("${path.module}/static", "**") : k => k }
   name     = "static/${each.key}"
@@ -206,11 +253,233 @@ Here's how to make it publicly accessible via cli using ~gsutil~:
 gsutil iam ch allUsers:objectViewer gs://<<bucket-name()>>
 #+end_src
 
-** git deployment
+*** Share files
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 19:28]
+:ID:       6df6cbe9-1872-44c9-86b2-f8ebee9b4026
+:END:
+
+Make all objects in your bucket readable to anyone on the public internet with ~allUsers~ against the ~READER~ role:
+
+#+begin_src terraform :tangle tf/main.tf
+# Make bucket public by granting allUsers READER access
+resource "google_storage_bucket_access_control" "public_rule" {
+  bucket = google_storage_bucket.static_website.name
+  role   = "READER"
+  entity = "allUsers"
+}
+#+end_src
+
+**** Assign specialty pages
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 19:29]
+:ID:       89dd53cc-c90c-4bcf-a2b0-2e4a1ee115c3
+:END:
+You can assign an index page suffix and a custom error page, which are known as [[https://cloud.google.com/storage/docs/static-website#specialty_pages][specialty pages]]. Assigning either is optional, but if you don't assign an index page suffix and upload the corresponding index page, users who access your top-level site are served an XML document tree containing a list of the public objects in your bucket.
+
+*** Load Balancer and SSL certificate
+:PROPERTIES:
+:CREATED:  [2023-07-09 Sun 17:33]
+:ID:       2022509e-e2ca-4621-98d9-d25c09f35fc1
+:END:
+Setting up the load balancer and SSL certificate using Terraform:
+
+Create a global IP address:
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_global_address" "static_ip" {
+  name = "global-app-static-ip"
+}
+#+end_src
+
+This block creates a global IP address with the name
+"global-app-static-ip".
+
+We can get the global address from the cli:
+#+begin_src sh
+gcloud compute addresses describe global-app-static-ip --global
+#+end_src
+
+**** Setup DNS
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 12:08]
+:ID:       c7f6f51c-daa4-4de7-abdf-43859ea20fe6
+:END:
+
+You need to create a DNS Managed Zone in Google Cloud DNS before you can use it in your Terraform configuration. You can do this through the Google Cloud Console or using the gcloud command-line tool.
+
+Here's how you can create a managed zone using gcloud:
+
+#+begin_src shell
+gcloud dns managed-zones create gcp-portfolio-dev --dns-name=example.com. --description="DNS zone for portfolio" --project=profile-website-391909
+#+end_src
+
+Replace example.com. with your domain name. The trailing dot is necessary.
+
+enable with:
+#+begin_src sh :noweb yes
+gcloud services enable dns.googleapis.com --project=<<project-id()>>
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+# Get the managed DNS zone
+data "google_dns_managed_zone" "gcp_portfolio_dev" {
+  name     = "gcp-portfolio-dev"
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+# Add the IP to the DNS
+resource "google_dns_record_set" "website" {
+  name         = "${data.google_dns_managed_zone.gcp_portfolio_dev.dns_name}"
+  type         = "A"
+  ttl          = 300
+  managed_zone = data.google_dns_managed_zone.gcp_portfolio_dev.name
+  rrdatas      = [google_compute_global_address.static_ip.address]
+}
+#+end_src
+
+**** Create a backend bucket:
+:PROPERTIES:
+:CREATED:  [2023-07-09 Sun 21:09]
+:ID:       4d60b6d2-7091-4904-a4cc-bf2b809e550f
+:END:
+
+This block creates a backend bucket that points to the Cloud Storage bucket.
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_backend_bucket" "backend_bucket" {
+  name        = "website-backend-bucket"
+  description = "Contains static files needed by the website"
+  bucket_name = google_storage_bucket.static_website.name
+  enable_cdn  = true
+}
+#+end_src
+
+**** Create ssl
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 12:07]
+:ID:       44376191-1d83-4d73-aa9f-8e5270ad23c1
+:END:
+
+There's configuration needed to create another cert as a stand-in before deleting the old one.
+https://github.com/hashicorp/terraform-provider-google/issues/5356
+https://github.com/hashicorp/terraform-provider-google/blob/main/website/docs/r/compute_managed_ssl_certificate.html.markdown
+#+begin_src terraform :tangle tf/main.tf
+# Create HTTPS certificate
+resource "google_compute_managed_ssl_certificate" "portfolio_ssl_cert" {
+  provider = google-beta
+  name     = "website-cert"
+  managed {
+    domains = tolist([
+      google_dns_record_set.website.name,
+      "www.danielotto.jp"
+    ])
+  }
+}
+#+end_src
+
+**** Create a URL map:
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 19:23]
+:ID:       ec81a9d3-dbcf-468b-b5b1-644bf4268fc8
+:END:
+
+This block creates a URL map that directs all incoming requests to the backend bucket.
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_url_map" "portfolio_map" {
+  name            = "website-url-map"
+  default_service = google_compute_backend_bucket.backend_bucket.self_link
+
+  # Add the host rules to handle "www.danielotto.jp" and "danielotto.jp" (non-www) traffic
+  host_rule {
+    hosts        = ["www.danielotto.jp"]
+    path_matcher = "www-danielotto-jp"
+  }
+
+  host_rule {
+    hosts        = ["danielotto.jp"]
+    path_matcher = "danielotto-jp"
+  }
+
+  # Define the path matchers
+  path_matcher {
+    name = "www-danielotto-jp"
+
+    default_service = google_compute_backend_bucket.backend_bucket.self_link
+  }
+
+  path_matcher {
+    name = "danielotto-jp"
+
+    default_service = google_compute_backend_bucket.backend_bucket.self_link
+  }
+
+  # Set up the default action to redirect HTTP to HTTPS
+  # default_route_action {
+  #   redirect_action {
+  #     https_redirect = true
+  #     strip_query    = false
+  #   }
+  # }
+}
+#+end_src
+
+**** Create an HTTPS target proxy:
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 19:23]
+:ID:       9c1aa00e-c975-4d6c-8ee1-eaf24524ddc6
+:END:
+This block creates an HTTPS target proxy that uses the URL map and SSL certificate.
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_target_https_proxy" "portfolio_site_proxy" {
+  name             = "website-https-proxy"
+  url_map          = google_compute_url_map.portfolio_map.self_link
+  ssl_certificates = [google_compute_managed_ssl_certificate.portfolio_ssl_cert.self_link]
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_target_http_proxy" "portfolio_site_proxy" {
+  name             = "website-http-proxy"
+  url_map          = google_compute_url_map.portfolio_map.self_link
+}
+#+end_src
+
+**** Create a global forwarding rule:
+:PROPERTIES:
+:CREATED:  [2023-07-10 Mon 19:23]
+:ID:       d4b3832e-bbec-4df2-9695-6b173926d827
+:END:
+This block creates a global forwarding rule that directs all incoming HTTPS traffic to the target proxy. Please replace =google_storage_bucket.default.name= with your actual bucket name. Also, ensure that you have the necessary permissions to create and manage these resources in your Google Cloud project.
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_global_forwarding_rule" "http" {
+  name       = "website-http-rule"
+  target     = google_compute_target_http_proxy.portfolio_site_proxy.self_link
+  ip_address = google_compute_global_address.static_ip.address
+  port_range = "80"
+}
+#+end_src
+
+#+begin_src terraform :tangle tf/main.tf
+resource "google_compute_global_forwarding_rule" "https" {
+  name       = "website-https-rule"
+  target     = google_compute_target_https_proxy.portfolio_site_proxy.self_link
+  ip_address = google_compute_global_address.static_ip.address
+  port_range = "443"
+}
+#+end_src
+
+
+** NEXT Github Actions for a CI/CD pipeline
 :PROPERTIES:
 :CREATED:  [2022-09-28 Wed 15:29]
 :ID:       bd762a86-cf35-4873-ace8-1c6ddb80c862
 :header-args: :tangle no :eval no
+:TRIGGER:  chain-find-next(NEXT,from-current,priority-up,effort-down)
 :END:
 https://medium.com/interleap/automating-terraform-deployment-to-google-cloud-with-github-actions-17516c4fb2e5
 
@@ -430,14 +699,14 @@ body                             { background: var(--background); color: var(--f
 :END:
 #+begin_src css  :tangle theme/static/css/common.css
 /* Document configurations */
-body                 { padding: 0px; margin: 0px; font-family: monospace, sans-serif; font-size: 16pt;
+body                 { padding: 0px; margin: 0px; font-family: monospace, sans-serif; font-size: 14pt;
                        line-height: 32px; display: flex; flex-direction: column; min-height: 100vh; }
 
 /* Titles */
 h1, h2, h3, h4, h5   { padding: 0; margin-top: 60px; color: #83a598; }
-h1                   { font-size: 55px; line-height: 1.1em; }
-h2                   { font-size: 40px; line-height: 1.1em; }
-h3                   { font-size: 30px; line-height: 1.1em; }
+h1                   { font-size: 45; line-height: 1.1em; }
+h2                   { font-size: 35; line-height: 1.1em; }
+h3                   { font-size: 25; line-height: 1.1em; }
 
 /* links */
 a                    { color: #bd93f9; text-decoration: none; }
@@ -451,7 +720,8 @@ hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 
 /* Elements that can appear anywhere */
 .note                { background-color: #504945; padding: 5px 25px; border-radius: 10px; }
-.centralized img     { margin: auto auto; display: block; }
+/* .centralized img     { margin: auto auto; display: block; } */
+.centralized img     { margin: left; display: block; }
 
 /* Top bar with the badges */
 .social              { margin: 60px 0; }
@@ -833,6 +1103,7 @@ The below is required to get the right dependencies
   (package-install 'use-package))
 
 (use-package rainbow-delimiters :config :ensure t)
+(use-package web-server :config :ensure t)
 
 ;; Install and configure dependencies
 (use-package templatel :ensure t)
@@ -894,6 +1165,16 @@ The below is required to get the right dependencies
 (weblorg-export)
 #+end_src
 
-#+begin_src sh :results silent
+** Execute script
+:PROPERTIES:
+:CREATED:  [2023-07-27 Thu 15:14]
+:ID:       4cdeb289-a39c-4554-a427-27cbc34f8b37
+:END:
+
+#+begin_src tmux :session scripts
 emacs --script publish.el
+#+end_src
+
+#+begin_src tmux :session vterm-demo
+echo "vterm not working"
 #+end_src

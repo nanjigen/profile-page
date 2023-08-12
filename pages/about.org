@@ -1,5 +1,6 @@
 #+OPTIONS: toc:nil num:nil
 #+TITLE: Hi! I'm Daniel
+#+SLUG: index
 
 データアナリスト・言語学者
 
@@ -9,31 +10,31 @@ Location: Tokyo, Japan
 
 Summary:
 
-I am a versatile professional with a background in Japanese to English translation, specializing in the games industry. Having lived and worked in Tokyo, I have collaborated with leading Japanese publishers to provide localization and linguistic quality assurance services. Alongside my expertise in games and creative writing, I have engaged in honours research within the field of Linguistics, focusing on second language acquisition and the use of Space Repetition algorithms. I leverage my proficiency in Python and Computational Linguistics to analyze linguistic and other data. Currently, I am based in Tokyo, Japan.
+I am a results-driven professional with a strong background in Data Engineering and Computational Linguistics, based in Tokyo, Japan. My expertise lies in leveraging Python and GCP for data analysis and developing efficient workflows. My passion for solving complex problems in the realm of Linguistics has driven me to explore cutting-edge tools and open-source programs to improve data processing and analysis.
 
 Experience and Skills:
 
-    - Japanese to English Translation: Extensive experience as a freelance translator, delivering high-quality translations for the games industry.
-    - Localization and Linguistic Quality Assurance: Proficient in performing localization and linguistic quality assurance tasks for large Japanese publishers.
-    - Data Analysis: Skilled in utilizing Python and Computational Linguistics to analyze diverse datasets within the field of Linguistics.
-    - Tools and Software: Proficient in using Emacs (Doom Emacs distribution) as my primary tool, enabling efficient translation, programming, and analysis workflows. I employ Vim-like modal editing in various applications, enhancing my productivity. Additionally, I leverage org-mode in a literate programming style, similar to Jupyter notebooks, for cross-compatibility.
-    - Research and Development: Keen interest in Computer Science and data analysis, dedicating free time to theoretical open-source programs (e.g., org-incremental) and studying LISPs and mathematics.
+ - Data Engineering and Analysis: Proficient in using Python and GCP (Google Cloud Platform) to tackle diverse datasets and extract valuable insights. I have successfully completed various data-driven projects, including language-related research and second language acquisition analysis.
+ - Technical Localization: While I have experience in Japanese to English translation, my primary focus has been on the technical aspects of localization and linguistic quality assurance. I have collaborated with prominent Japanese publishers, contributing to the adaptation and optimization of products for global audiences.
+ - Computational Linguistics: With a keen interest in Computational Linguistics, I have developed expertise in applying Space Repetition algorithms and other computational techniques to study language patterns and behavior.
+ - Efficient Workflow Development: I utilize Emacs (Doom Emacs distribution) as my primary tool to streamline translation, programming, and data analysis tasks. Leveraging Vim-like modal editing in various applications further enhances my productivity. Additionally, I adopt a literate programming style, similar to Jupyter notebooks, using org-mode for cross-compatibility and seamless collaboration.
+ - Research and Open-Source Contribution: I am dedicated to continuous learning in Computer Science and data analysis. During my free time, I contribute to theoretical open-source programs like org-incremental and actively study LISPs and mathematics to deepen my technical knowledge.
 
 # If curiosity has caught your CAT tool, you can see how I work [[workflow.org][here].
 
 If you have any inquires or would like to work with me, contact me at:
-mailto:analytics@danielotto.jp
+mailto:contact@danielotto.jp
 
 [[file:../pdf/cv-tech-en.pdf][My C.V.]]
 ------
 
-* Links
-:PROPERTIES:
-:CREATED:  [2022-10-09 Sun 18:12]
-:ID:       543b96e7-ca83-4048-b960-c2c169adf385
-:END:
+# * Links
+# :PROPERTIES:
+# :CREATED:  [2022-10-09 Sun 18:12]
+# :ID:       543b96e7-ca83-4048-b960-c2c169adf385
+# :END:
 
-  * [[url_for:blog][Blog (Under construction)]]
-  * [[https://github.com/nanjigen][GitHub]]
-  * [[https://linkedin.com/in/dmotto][LinkedIn]]
-  * [[mailto:techlisper@danielotto.jp][Email]]
+#   * [[url_for:blog][Blog (Under construction)]]
+#   * [[https://github.com/nanjigen][GitHub]]
+#   * [[https://linkedin.com/in/dmotto][LinkedIn]]
+#   * [[mailto:contact@danielotto.jp][Email]]

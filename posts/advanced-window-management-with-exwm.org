@@ -1,3 +1,5 @@
+#+TITLE: Advanced window management with EXWM
+#+DRAFT: t
 ** PROJECT Blog post: Advanced window management with EXWM
 :PROPERTIES:
 :CREATED:  [2023-04-04 Tue 07:49]
