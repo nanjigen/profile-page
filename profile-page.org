@@ -563,6 +563,8 @@ The =with= section provides configuration:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
 #+end_src
 
+- =credentials_json=: This is the Service Account JSON key stored as a secret in your GitHub repository. It's used to authenticate with Google Cloud.
+
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
     - name: Setup Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
@@ -570,9 +572,7 @@ The =with= section provides configuration:
         project_id: 'profile-website-391909'
 #+end_src
 
-- =service_account_key=: This is the Service Account JSON key stored as a secret in your GitHub repository. It's used to authenticate with Google Cloud.
 - =project_id=: The ID of your Google Cloud project.
-- =export_default_credentials=: This exports the credentials, allowing subsequent steps to use them.
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
     - name: Deploy to GCS
