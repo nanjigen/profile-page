@@ -33,6 +33,7 @@ jobs:
       run: |
         emacs --batch \
               --eval "(require 'org)" \
+              --eval "(require 'ob-shell)" \
               --eval "(setq org-confirm-babel-evaluate nil)" \
               --eval '(org-babel-tangle-file "profile-page.org")'
         emacs --script publish.el

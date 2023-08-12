@@ -594,7 +594,7 @@ The =with= section provides configuration:
 
 Here we install a specific version of emacs using ~purcell's~ [[https://github.com/purcell/setup-emacs][setup-emacs action]], using it to run a batch command from the terminal to tangle out our code stored in this file.
 
-#+begin_src yaml :noweb yes :tangle .github/workflows/workflow.yaml :results ?
+#+begin_src yaml :noweb yes :tangle .github/workflows/workflow.yaml
     - name: Setup Emacs
       uses: purcell/setup-emacs@master
       with:
@@ -610,22 +610,29 @@ Here's the batch tangle command:
 #+begin_src sh :noweb yes :noweb-ref tangle-command :eval no
 emacs --batch \
       --eval "(require 'org)" \
+      --eval "<<babel-languages>>" \
       --eval "<<confirm-babel-eval>>" \
       --eval '(org-babel-tangle-file "profile-page.org")'
 #+end_src
 
-Next we want to call the tangled ~publish.el~ script to generate our static website using ~weblorg~:
-#+begin_src sh :noweb yes :noweb-ref publish-script :eval no
-emacs --script publish.el
-#+end_src
-
-Note that for the above to work we need to have =org-confirm-babel-evaluate= set to =nil=, else our unattended Emacs in the runner tries to confirm code block evaluation interactively which blocks the tangling of certain blocks:
+As noted earlier, some blocks require the execution of other blocks, and so for the above to work we need to have =org-confirm-babel-evaluate= set to =nil=, else our unattended Emacs in the runner tries to confirm code block evaluation interactively which blocks the tangling of certain blocks:
 
 #+begin_src elisp :noweb-ref confirm-babel-eval
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
+Additionally, we need ~org-babel~ to load the languages needed for a given source block, which can be done by calling =org-babel-do-load-languages= or more conveniently for multiline scripts, a =require= statement for the ~ob~ library:
+
+#+begin_src elisp :noweb-ref babel-languages
+(require 'ob-shell)
+#+end_src
+
 Look to the *Local variables* footer at the end of this document for the buffer local setting.
+
+Next we want to call the tangled ~publish.el~ script to generate our static website using ~weblorg~:
+#+begin_src sh :noweb yes :noweb-ref publish-script :eval no
+emacs --script publish.el
+#+end_src
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
     - name: Deploy to GCS
       run: |
