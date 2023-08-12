@@ -546,13 +546,24 @@ This section lists the steps that the job will execute in sequence:
     steps:
 #+end_src
 
-This step checks out your repository's code onto the runner (the virtual machine executing the job). It uses a pre-built action =actions/checkout@v2= provided by GitHub:
+***** Step 1: Checkout repo
+:PROPERTIES:
+:CREATED:  [2023-08-12 Sat 10:49]
+:ID:       54a8e6e8-cf15-4fe6-8d24-104c320717c5
+:END:
+
+This step checks out your repository's code onto the runner (the virtual machine executing the job). It uses a pre-built action =actions/checkout@v2= provided by GitHub. In our case we are mainly checking out our =.org= files which ~weblorg~ will use later on to generate our =.html= and static files.
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml
     - name: Checkout code
       uses: actions/checkout@v2
 #+end_src
 
+***** Step 2: Authenticate and Google Cloud SDK
+:PROPERTIES:
+:CREATED:  [2023-08-12 Sat 10:51]
+:ID:       47e3988d-c2e3-4147-830b-4fd68ecdd7b8
+:END:
 The following steps set up the Google Cloud CLI on the runner. It first authenticates via the Service Account Key JSON we provided to Github as a secret using the pre-built ~auth~ action from [[https://github.com/google-github-actions/auth][google-github-actions/auth]]. It then uses another pre-built from the [[https://github.com/google-github-actions/setup-gcloud][google-github-actions/setup-gcloud]] repo provided by Google. Note that we don't use the =main= branch, but instead =v1= as [[https://github.com/google-github-actions/setup-gcloud#versioning][per the suggestion]] on the action's repo.
 The =with= section provides configuration:
 
