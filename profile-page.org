@@ -607,15 +607,18 @@ Here we install a specific version of emacs using ~purcell's~ [[https://github.c
 #+end_src
 
 Here's the batch tangle command:
-#+begin_src sh :noweb yes :noweb-ref tangle-command
+#+begin_src sh :noweb yes :noweb-ref tangle-command :eval no
 emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "profile-page.org")'
 #+end_src
 
 Next we want to call the tangled ~publish.el~ script to generate our static website using ~weblorg~:
-#+begin_src sh :noweb yes :noweb-ref publish-script
+#+begin_src sh :noweb yes :noweb-ref publish-script :eval no
 emacs --script publish.el
 #+end_src
 
+Note that for the above to work we need to have =org-confirm-babel-evaluate= set to =nil=, else our unattended Emacs in the runner tries to confirm code block evaluation interactively which blocks the tangling of certain blocks.
+
+Look to the *Local variables* footer at the end of this document for the buffer local setting.
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
     - name: Deploy to GCS
       run: |
@@ -1220,3 +1223,12 @@ emacs --script publish.el
 #+begin_src tmux :session vterm-demo
 echo "vterm not working"
 #+end_src
+
+* Local variables
+:PROPERTIES:
+:CREATED:  [2023-08-12 Sat 13:26]
+:ID:       cb5bf06b-6899-4c7e-84b4-ed59e001d3a9
+:END:
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# End:
