@@ -1149,10 +1149,10 @@ The blocks available in this file are:
 The below is required to get the right dependencies
 #+begin_src elisp :tangle publish.el :results silent
 ;; Guarantee the freshest version of the weblorg
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
-(require 'weblorg)
-(require 'templatel)
+;; (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
+;; (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
+;; (require 'weblorg)
+;; (require 'templatel)
 
 ;; Setup package management
 (require 'package)
@@ -1162,6 +1162,8 @@ The below is required to get the right dependencies
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package weblorg :config :ensure t)
+(use-package templatel :config :ensure t)
 (use-package rainbow-delimiters :config :ensure t)
 (use-package web-server :config :ensure t)
 
