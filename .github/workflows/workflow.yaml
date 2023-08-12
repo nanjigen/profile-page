@@ -31,7 +31,10 @@ jobs:
 
     - name: Tangle and publish
       run: |
-        emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "profile-page.org")'
+        emacs --batch \
+              --eval "(require 'org)" \
+              --eval "(setq org-confirm-babel-evaluate nil)" \
+              --eval '(org-babel-tangle-file "profile-page.org")'
         emacs --script publish.el
 
     - name: Deploy to GCS

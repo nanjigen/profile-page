@@ -608,7 +608,10 @@ Here we install a specific version of emacs using ~purcell's~ [[https://github.c
 
 Here's the batch tangle command:
 #+begin_src sh :noweb yes :noweb-ref tangle-command :eval no
-emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "profile-page.org")'
+emacs --batch \
+      --eval "(require 'org)" \
+      --eval "<<confirm-babel-eval>>" \
+      --eval '(org-babel-tangle-file "profile-page.org")'
 #+end_src
 
 Next we want to call the tangled ~publish.el~ script to generate our static website using ~weblorg~:
@@ -616,7 +619,11 @@ Next we want to call the tangled ~publish.el~ script to generate our static webs
 emacs --script publish.el
 #+end_src
 
-Note that for the above to work we need to have =org-confirm-babel-evaluate= set to =nil=, else our unattended Emacs in the runner tries to confirm code block evaluation interactively which blocks the tangling of certain blocks.
+Note that for the above to work we need to have =org-confirm-babel-evaluate= set to =nil=, else our unattended Emacs in the runner tries to confirm code block evaluation interactively which blocks the tangling of certain blocks:
+
+#+begin_src elisp :noweb-ref confirm-babel-eval
+(setq org-confirm-babel-evaluate nil)
+#+end_src
 
 Look to the *Local variables* footer at the end of this document for the buffer local setting.
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
