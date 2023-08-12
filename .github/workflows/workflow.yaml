@@ -24,6 +24,16 @@ jobs:
       with:
         project_id: 'profile-website-391909'
 
+    - name: Setup Emacs
+      uses: purcell/setup-emacs@master
+      with:
+        version: 28.1
+
+    - name: Tangle and publish
+      run: |
+        emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "profile-page.org")'
+        emacs --script publish.el
+
     - name: Deploy to GCS
       run: |
         gsutil rsync -R ./output gs://www.danielotto.jp/output

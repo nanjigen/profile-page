@@ -1,5 +1,6 @@
 #+TITLE: Static Blog with Google Cloud Storage and Weblorg
 #+DATE: <2023-07-27 Thu>
+#+PROPERTY:  :header-args :mkdirp yes
 
 This is a [[https://howardism.org/Technical/Emacs/literate-devops.html][Literate DevOps]] Google Cloud Platform implementation document which tells the story of the current state of the configuration of my personal site, while also declaring it in the form of source code. This is achieved via org-mode's ~noweb~ feature, allowing code blocks in the document to be tangled out to specified files.
 
@@ -584,6 +585,36 @@ The =with= section provides configuration:
 #+end_src
 
 - =project_id=: The ID of your Google Cloud project.
+
+***** Step 3: Install Emacs and tangle code
+:PROPERTIES:
+:CREATED:  [2023-08-12 Sat 10:53]
+:ID:       dd23ee73-76c6-447e-85c6-452d3c4c2932
+:END:
+
+Here we install a specific version of emacs using ~purcell's~ [[https://github.com/purcell/setup-emacs][setup-emacs action]], using it to run a batch command from the terminal to tangle out our code stored in this file.
+
+#+begin_src yaml :noweb yes :tangle .github/workflows/workflow.yaml :results ?
+    - name: Setup Emacs
+      uses: purcell/setup-emacs@master
+      with:
+        version: 28.1
+
+    - name: Tangle and publish
+      run: |
+        <<tangle-command>>
+        <<publish-script>>
+#+end_src
+
+Here's the batch tangle command:
+#+begin_src sh :noweb yes :noweb-ref tangle-command
+emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "profile-page.org")'
+#+end_src
+
+Next we want to call the tangled ~publish.el~ script to generate our static website using ~weblorg~:
+#+begin_src sh :noweb yes :noweb-ref publish-script
+emacs --script publish.el
+#+end_src
 
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
     - name: Deploy to GCS
