@@ -40,4 +40,5 @@ jobs:
 
     - name: Deploy to GCS
       run: |
-        gsutil rsync -R ./output gs://www.danielotto.jp/output
+        gsutil rsync -r ./static/ gs://www.danielotto.jp/static/
+        gsutil rsync -r ./output/ gs://www.danielotto.jp/output/

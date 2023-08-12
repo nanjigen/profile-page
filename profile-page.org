@@ -633,16 +633,24 @@ Next we want to call the tangled ~publish.el~ script to generate our static webs
 #+begin_src sh :noweb yes :noweb-ref publish-script :eval no
 emacs --script publish.el
 #+end_src
+
+***** Step 4: Deploy to GCP Storage
+:PROPERTIES:
+:CREATED:  [2023-08-12 Sat 11:02]
+:ID:       48916206-23a7-4e7d-b985-968f5adee3f5
+:END:
+
+This step deploys the site to Google Cloud Storage. It uses the [[https://cloud.google.com/storage/docs/gsutil/commands/rsync][gsutil rsync]] command, which is a part of the Google Cloud SDK:
+
 #+begin_src yaml :tangle .github/workflows/workflow.yaml :results ?
     - name: Deploy to GCS
       run: |
-        gsutil rsync -R ./output gs://www.danielotto.jp/output
+        gsutil rsync -r ./static/ gs://www.danielotto.jp/static/
+        gsutil rsync -r ./output/ gs://www.danielotto.jp/output/
 #+end_src
 
-This step deploys your site to Google Cloud Storage. It uses the =gsutil= command, which is a part of the Google Cloud SDK:
-
 - =gsutil rsync=: This command synchronizes the contents of a directory with a bucket.
-- =-R=: This flag ensures the command is recursive, so it includes all sub-directories.
+- =-r=: This flag ensures the command is recursive, so it includes all sub-directories.
 - =./path_to_site_files=: This is the local directory containing your site's files.
 - =gs://your-bucket-name/=: This is the destination bucket in Google Cloud Storage.
 
