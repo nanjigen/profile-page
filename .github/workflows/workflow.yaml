@@ -29,16 +29,22 @@ jobs:
       with:
         version: 28.1
 
-    - name: Tangle and publish
+    - name: Tangle
       run: |
-        cp profile-page.org posts/
         emacs --batch \
               --eval "(require 'org)" \
               --eval "(require 'ob-shell)" \
               --eval "(setq org-confirm-babel-evaluate nil)" \
-              --eval '(org-babel-tangle-file "profile-page.org")' \
+              --eval '(org-babel-tangle-file "profile-page.org")'
+        cp profile-page.org posts/
+
+    - name: Publish
+      run: |
+        emacs --batch \
+              --eval "(require 'org)" \
+              --eval "(require 'ob-shell)" \
+              --eval "(setq org-confirm-babel-evaluate nil)" \
               --script publish.el
-        # emacs --script publish.el
 
     - name: Deploy to GCS
       run: |
