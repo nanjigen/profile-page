@@ -646,7 +646,7 @@ This step deploys the site to Google Cloud Storage. It uses the [[https://cloud.
     - name: Deploy to GCS
       run: |
         gsutil rsync -r ./static/ gs://www.danielotto.jp/static/
-        gsutil rsync -r ./output/ gs://www.danielotto.jp/output/
+        gsutil rsync -r ./output/ gs://www.danielotto.jp/
 #+end_src
 
 - =gsutil rsync=: This command synchronizes the contents of a directory with a bucket.
