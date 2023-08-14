@@ -1185,10 +1185,12 @@ The below is required to get the right dependencies
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package weblorg :config :ensure t)
-(use-package templatel :config :ensure t)
-(use-package rainbow-delimiters :config :ensure t)
-(use-package web-server :config :ensure t)
+(use-package weblorg :ensure t)
+(use-package templatel :ensure t)
+(use-package rainbow-delimiters :ensure t)
+(use-package nix-mode :ensure t)
+(use-package terraform-mode :ensure t)
+(use-package web-mode :ensure t)
 
 ;; Install and configure dependencies
 (use-package templatel :ensure t)
@@ -1196,6 +1198,7 @@ The below is required to get the right dependencies
   :ensure t
   :config
   (setq org-html-htmlize-output-type 'css))
+  ;; (setq org-html-htmlize-output-type 'inline-css))
 #+end_src
 
 #+begin_src elisp +n :tangle publish.el :eval no
