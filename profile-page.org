@@ -1170,7 +1170,7 @@ The blocks available in this file are:
 :END:
 
 The below is required to get the right dependencies
-#+begin_src elisp -n :tangle publish.el :eval no
+#+begin_src elisp -n :tangle publish.el :noweb yes :eval no
 ;; Guarantee the freshest version of the weblorg
 ;; (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/weblorg")
 ;; (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/templatel")
@@ -1184,6 +1184,9 @@ The below is required to get the right dependencies
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+<<confirm-babel-eval>>
+<<babel-languages>>
 
 (use-package weblorg :ensure t)
 (use-package templatel :ensure t)
