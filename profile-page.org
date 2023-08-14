@@ -712,7 +712,7 @@ https://www.lucacambiaghi.com/posts/weblorg.html
     --foreground-secondary: #bfbfbf;
 
     /* --- --- --- Syntax Highlighting for Code Sections --- --- ---  */
-    ---code-background:           var(--theme-dracula-background);
+    ---code-background:           var(--theme-dracula-background-secondary);
     ---code-foreground:           var(--theme-dracula-foreground);
     ---code-builtin:              var(--theme-dracula-builtin);
     ---code-comment:              var(--theme-dracula-comment);
@@ -767,11 +767,11 @@ body                             { background: var(--background); color: var(--f
 :END:
 #+begin_src css -n :tangle theme/static/css/common.css
 /* Document configurations */
-body                 { padding: 0px; margin: 0px; font-family: monospace, sans-serif; font-size: 14pt;
-                       line-height: 32px; display: flex; flex-direction: column; min-height: 100vh; }
+body                 { padding: 20px; margin: 0px; font-family: monospace, sans-serif; font-size: 13pt;
+                       line-height: 28px; display: flex; flex-direction: column; min-height: 100vh; }
 
 /* Titles */
-h1, h2, h3, h4, h5   { padding: 0; margin-top: 60px; color: #83a598; }
+h1, h2, h3, h4, h5   { padding: 0; margin-top: 50px; color: #83a598; }
 h1                   { font-size: 45; line-height: 1.1em; }
 h2                   { font-size: 35; line-height: 1.1em; }
 h3                   { font-size: 25; line-height: 1.1em; }
@@ -784,7 +784,12 @@ a:hover              { color: #fff; }
 hr                   { border-top: 0; border-bottom: solid 1px #3c3836; }
 
 /* Element that wraps everything */
-.container           { width: calc(55% - 100px); padding: 10px 150px; margin: 0 auto; }
+/* .container           { width: calc(55% - 100px); padding: 10px 150px; margin: 0 auto; } */
+.container           {
+    max-width: 800px; /* Adjust this value as needed */
+    width: 55%;
+    padding: 20px;
+    margin: 0 auto; }
 
 /* Elements that can appear anywhere */
 .note                { background-color: #504945; padding: 5px 25px; border-radius: 10px; }
@@ -822,7 +827,8 @@ ul.posts .comment   { padding-top: 10px;  color: #666; }
 .content.blog > ul > li { margin-bottom: 10px; }
 
 /* Content formatting */
-#content            { width: calc(60% - 100px); padding: 10px 150px; margin: auto auto; color: #333; }
+/* #content            { width: calc(60% - 100px); padding: 10px 150px; margin: auto auto; color: #333; } */
+#content            { width: 60%; padding: 10px; margin: auto auto; color: #333; }
 .post               { display: block; min-height: 70vh; display: flex; flex-grow: 1; flex-direction: column; }
 .subtitle { color: #aaa; }
 
@@ -830,21 +836,21 @@ ul.posts .comment   { padding-top: 10px;  color: #666; }
 code                { background: #3c3836; color: #fff; padding: 0 0.5rem; border-radius: 3px; }
 .org-src-container  { overflow-x: auto; padding: 10px 40px; border-radius: 10px; margin: 20px 0; line-height: 1.3; }
 
-/* Very small width */
-@media (max-width: 480px) {
-    h1                   { margin-top: 20px; }
-    .social              { margin: 20px 0; }
-    .social .badges      { padding: 0 20px 0 0; }
-    .container,
-    #content, .container { width: 90%; padding: 10px; }
-}
+/* /\* Very small width *\/ */
+/* @media (max-width: 480px) { */
+/*     h1                   { margin-top: 20px; } */
+/*     .social              { margin: 20px 0; } */
+/*     .social .badges      { padding: 0 20px 0 0; } */
+/*     .container, */
+/*     #content, .container { width: 90%; padding: 10px; } */
+/* } */
 
-/* Medium width */
-@media (min-width: 480px) and (max-width: 1000px) {
-    .social              { margin: 20px 0; }
-    #content, .container,
-    .container           { width: 80%; padding: 10px; }
-}
+/* /\* Medium width *\/ */
+/* @media (min-width: 480px) and (max-width: 1000px) { */
+/*     .social              { margin: 20px 0; } */
+/*     #content, .container, */
+/*     .container           { width: 80%; padding: 10px; } */
+/* } */
 #+end_src
 
 *** colors
@@ -1067,12 +1073,12 @@ The blocks available in this file are:
         {% if site_keywords is defined %}<meta name="keywords" content="{{ site_keywords }}" />{% endif %}
         {% block meta %}{% endblock %}
         <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-        <!-- <link rel="stylesheet" href="{{ url_for("static", file="main.css") }}" type="text/css" /> -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="/static/img/lambda-in-8bit.png">
         <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml">
         {% endblock %}
     </head>
+
     <body>
         {# Top navigation bar #}
         {% block nav %}
@@ -1090,6 +1096,7 @@ The blocks available in this file are:
                 </ul>
             </nav>
         </header>
+
         <div class="social">
             <div class="container">
                 <ul class="badges">
