@@ -31,12 +31,14 @@ jobs:
 
     - name: Tangle and publish
       run: |
+        cp profile-page.org posts/
         emacs --batch \
               --eval "(require 'org)" \
               --eval "(require 'ob-shell)" \
               --eval "(setq org-confirm-babel-evaluate nil)" \
-              --eval '(org-babel-tangle-file "profile-page.org")'
-        emacs --script publish.el
+              --eval '(org-babel-tangle-file "profile-page.org")' \
+              --script publish.el
+        # emacs --script publish.el
 
     - name: Deploy to GCS
       run: |
